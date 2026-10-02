@@ -6,75 +6,126 @@ export interface FAQ {
 }
 
 export const faqs: FAQ[] = [
+  // Standard FAQs
   {
-    id: "what-services",
+    id: "cdc-projects",
+    category: "CDC",
+    question: "What types of projects require a Complying Development Certificate (CDC)?",
+    answer:
+      "A CDC can be used for a wide range of standard residential projects — including new single dwellings, alterations and additions, granny flats (secondary dwellings), swimming pools, garages, carports, and demolition works — provided they comply with the relevant State Environmental Planning Policy (SEPP). Not all projects qualify; eligibility depends on the specific site, zoning, and design. We assess your project against the SEPP requirements and give you a clear answer upfront.",
+  },
+  {
+    id: "appoint-certifier",
     category: "General",
-    question: "What bookkeeping and accounting services do you provide?",
+    question: "Can I appoint my own certifier?",
     answer:
-      "We provide professional bookkeeping, financial reporting, management consultancy, budgeting and forecasting, cost control, and actuarial valuation support. Our core service is day-to-day bookkeeping, but we can also support more complex financial management requirements depending on your business needs.",
+      "Yes. In NSW, you can appoint a registered private certifier — like Certify Right — as your Principal Certifier for most development projects. Appointing your own certifier means you choose who manages your inspections and certification, rather than having one assigned by council. It also tends to be faster and gives you direct access to your certifier throughout the project.",
   },
   {
-    id: "experience",
+    id: "cdc-vs-da",
+    category: "CDC",
+    question: "What is the difference between a CDC and a DA?",
+    answer:
+      "A Development Application (DA) is lodged with and assessed by your local council. It can be used for most types of development but can take weeks or months, involves public notification periods, and is subject to council conditions. A Complying Development Certificate (CDC) is issued by a private certifier and bypasses the council process entirely — making it significantly faster for eligible projects. The trade-off is that CDCs can only be issued where the project strictly meets the SEPP code requirements. We can advise you which pathway suits your project.",
+  },
+  {
+    id: "after-cc",
     category: "General",
-    question: "How much experience does your team have?",
+    question: "What happens after I receive a Construction Certificate?",
     answer:
-      "Our team brings over 20 years of professional experience in bookkeeping, accounting, and financial management. We have worked across a wide range of business types and industries, providing practical, reliable support tailored to each client's requirements.",
+      "Once your Construction Certificate is issued, construction can commence. You must have appointed a Principal Certifier before work starts. During construction, mandatory critical stage inspections are required at specified points — such as before footings are poured, at frame stage, and at practical completion. Your Principal Certifier coordinates these. At the end of the project, a final inspection is conducted and, if satisfied, an Occupation Certificate is issued confirming the building is safe and legal to occupy.",
   },
   {
-    id: "systems",
+    id: "how-many-inspections",
     category: "General",
-    question: "Which accounting systems do you work with?",
+    question: "How many inspections do I need?",
     answer:
-      "We work with a broad range of leading accounting and ERP systems, including Oracle, SAP, QuickBooks, Odoo, Xero, Sage, Zoho Books, and Microsoft Dynamics. Where your business uses a customized or bespoke system, we can also support that, as we adapt to the tools and processes already in place.",
+      "The number and type of inspections depends on your project and the type of approval. For most residential new builds, mandatory critical stage inspections include: commencement inspection (before footings are poured), frame inspection, wet areas inspection, and final inspection before the Occupation Certificate. Additional inspections may be required depending on the scope of work. We identify all required inspections at the outset and keep you informed throughout the project.",
   },
   {
-    id: "hourly-vs-monthly",
-    category: "Plans",
-    question: "What is the difference between the hourly plan and the monthly plan?",
-    answer:
-      "The hourly-based plan is designed for businesses that need accounting support on a flexible or as-needed basis. You are billed for the actual hours worked, making it suitable for businesses with occasional or fluctuating accounting workloads. The monthly fixed plan provides a dedicated professional working 5 days a week, 8 hours a day, giving you ongoing and structured support at a predictable monthly cost. This plan is best suited to businesses with regular, ongoing accounting and financial management requirements.",
-  },
-  {
-    id: "pricing",
-    category: "Plans",
-    question: "What are your prices?",
-    answer:
-      "Our hourly plan is available at three levels: Bookkeeper at $10 per hour, Accounting Supervisor at $15 per hour, and Accounting Manager at $20 per hour. Our monthly fixed plan provides a dedicated professional at: Bookkeeper $1,000 per month, Accounting Supervisor $1,500 per month, and Accounting Manager $2,000 per month. All monthly plans include full-time dedicated support (5 days a week, 8 hours a day).",
-  },
-  {
-    id: "expertise-levels",
-    category: "Plans",
-    question: "What is the difference between a Bookkeeper, Supervisor, and Manager?",
-    answer:
-      "A Bookkeeper handles day-to-day bookkeeping and accounting tasks — maintaining accurate records, reconciliations, and data entry. An Accounting Supervisor provides an additional level of expertise and oversight, reviewing bookkeeping work and ensuring quality and accuracy. An Accounting Manager provides management-level support including financial analysis, business insights, and advisory services to help management understand their financial position and make informed decisions. We recommend selecting the level that best matches the complexity and requirements of your business.",
-  },
-  {
-    id: "get-started",
+    id: "fire-safety-cert",
     category: "General",
-    question: "How do I get started?",
+    question: "What is a Fire Safety Certificate?",
     answer:
-      "Getting started is simple. Contact us to discuss your bookkeeping and accounting requirements. We will understand your business, agree on the scope and level of support you need, assign the appropriate professional, and begin supporting your business. You can reach us by email at info@certifyright.com.au or via WhatsApp.",
+      "A Fire Safety Certificate is a document confirming that all essential fire safety measures in a building comply with the relevant standards. It is typically required as part of the Occupation Certificate process for certain classes of buildings, and must be lodged with council. Building owners of applicable buildings also have ongoing obligations to maintain fire safety measures and lodge Annual Fire Safety Statements each year. Certify Right can assist with fire safety assessments and compliance.",
   },
   {
-    id: "ongoing-support",
+    id: "how-long",
     category: "General",
-    question: "Can I change my plan or level of support over time?",
+    question: "How long does certification take?",
     answer:
-      "Yes. We understand that business requirements change over time. Whether you need to increase your level of support during a busy period or scale back when things are quieter, we can adapt to your changing needs. We discuss any changes with you and agree on the revised scope and arrangement.",
+      "Timeframes vary depending on the type of certificate and the completeness of your documentation. A CDC can typically be issued within 10–20 business days from receipt of a complete application, though this depends on the complexity of the project and the documentation provided. A Construction Certificate follows a similar timeframe once all plans and specifications are submitted. We aim to turn things around as quickly as possible and keep you informed of progress throughout.",
+  },
+  // Top 10 questions clients actually ask
+  {
+    id: "cdc-vs-da-qualify",
+    category: "CDC",
+    question: "How do I know if my project qualifies for a CDC instead of a DA?",
+    answer:
+      "This is one of the first things we work out for you. Eligibility for a CDC depends on your site's zoning, the type of development, and whether the proposed design meets all the requirements of the relevant SEPP (State Environmental Planning Policy). Things like lot size, setbacks, height, and site constraints all factor in. Contact us with your address and a brief description of what you are planning — we will give you a straight answer on whether CDC is available for your project.",
   },
   {
-    id: "industry",
+    id: "what-pc-does",
     category: "General",
-    question: "What types of businesses do you work with?",
+    question: "What does a Principal Certifier actually do?",
     answer:
-      "We work with small and medium-sized businesses across a range of industries. Whether you are a startup needing initial bookkeeping support, a growing business requiring ongoing financial management, or an established company looking to reduce accounting costs while maintaining quality, we can provide appropriate support tailored to your situation.",
+      "The Principal Certifier (PC) is the person legally responsible for overseeing the certification of your building project. They issue the Construction Certificate (or confirm the CDC), conduct mandatory critical stage inspections during construction, and issue the Occupation Certificate at the end. Think of the PC as the compliance referee for your build — they are not the builder or the designer, but they check that everything is done correctly at key points. You must appoint a PC before construction starts.",
   },
   {
-    id: "reporting",
-    category: "Plans",
-    question: "Can you provide regular financial reports for my business?",
+    id: "critical-stage-inspection",
+    category: "General",
+    question: "What is a Critical Stage Inspection?",
     answer:
-      "Yes. Our financial reporting service provides management with clear, timely information about business performance and financial position. We can prepare profit and loss statements, balance sheets, cash flow reports, and management accounts according to your preferred reporting schedule. Regular reporting helps you stay informed and make better business decisions.",
+      "A Critical Stage Inspection (CSI) is a mandatory inspection that must be carried out at specific points during construction. These are prescribed under NSW legislation and vary depending on the type of building. For a standard residential dwelling, they typically include inspections before footings are poured, at frame stage, before lining goes on wet areas, and a final inspection at completion. Your Principal Certifier schedules and conducts these. Missing a required CSI can result in compliance issues and delay your Occupation Certificate.",
+  },
+  {
+    id: "plans-not-final",
+    category: "General",
+    question: "My plans aren't finalised yet — can I still contact you?",
+    answer:
+      "Absolutely — in fact, getting us involved early is often the best approach. We can advise you on the certification pathway that suits your project, flag any compliance issues before your plans are finalised, and help you avoid costly redesigns further down the track. A quick conversation at the planning stage can save significant time and money. Call or email us with what you are thinking and we will give you useful feedback straight away.",
+  },
+  {
+    id: "cdc-documents",
+    category: "CDC",
+    question: "What documents do I need to apply for a CDC?",
+    answer:
+      "A typical CDC application includes a completed application form, site plan, floor plans and elevations, a BASIX Certificate (for residential projects), a Statement of Environmental Effects, and a survey/site analysis. The exact requirements depend on your project type. We provide you with a clear document checklist at the start of the process so nothing is missed. Incomplete applications are the most common source of delays — we work with you upfront to make sure your submission is complete.",
+  },
+  {
+    id: "same-certifier",
+    category: "General",
+    question: "Can I use the same certifier for my CDC and my OC?",
+    answer:
+      "Yes — and it is usually the most efficient approach. When Certify Right issues your CDC and also acts as your Principal Certifier, we already know your project, the approval conditions, and the inspection requirements from the beginning. There is no handover, no learning curve, and no gaps in the process. We stay with your project from approval through to Occupation Certificate.",
+  },
+  {
+    id: "failed-inspection",
+    category: "General",
+    question: "What happens if my building fails an inspection?",
+    answer:
+      "If an inspection identifies defects or non-compliant work, we document the issues clearly and provide you with a defect notice specifying what needs to be rectified. Construction can continue in areas not affected by the defect, but the specific issues must be fixed before the next inspection at that stage can be passed. We aim to communicate clearly and work with builders to resolve issues quickly so the project keeps moving. Failing an inspection is not the end of the world — it is the system working as intended.",
+  },
+  {
+    id: "pool-granny-flat",
+    category: "General",
+    question: "Do I need a certifier for a swimming pool or granny flat?",
+    answer:
+      "Yes — both swimming pools and granny flats (secondary dwellings) require certification in NSW. For a new pool, you need building approval (either a CDC or a DA/CC) and a pool barrier compliance certificate. For a granny flat, a CDC is the most common pathway, provided the site and design meet the SEPP requirements. We handle both. Contact us with your project details and we will advise you on the approval and inspection requirements.",
+  },
+  {
+    id: "what-is-complying-dev",
+    category: "CDC",
+    question: "What is a Complying Development, and does my project qualify?",
+    answer:
+      "Complying Development is a category of development that is pre-approved under State legislation — meaning that if your project strictly meets the code requirements, it automatically qualifies for a CDC without needing a council DA. The codes cover a wide range of standard residential projects but have specific requirements around things like site area, setbacks, height, heritage, and flood constraints. The best way to find out if your project qualifies is to contact us directly — we assess eligibility quickly and give you a straight answer.",
+  },
+  {
+    id: "how-soon",
+    category: "General",
+    question: "How soon can I get started?",
+    answer:
+      "We aim to respond to all enquiries within 24 hours and provide a quote for your project promptly. Once you engage us, we begin the assessment process straight away. The speed of the certification process after that depends on the quality and completeness of your documentation — which is why we provide a clear checklist upfront. Call us on 0423 925 514 or send an email to info@certifyright.com.au and we will get back to you the same business day.",
   },
 ];
 

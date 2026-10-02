@@ -1,28 +1,79 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
+  FileCheck,
+  HardHat,
+  ClipboardCheck,
   BookOpen,
-  BarChart2,
-  TrendingUp,
-  Target,
-  PiggyBank,
-  Calculator,
+  FileText,
+  Building2,
+  Waves,
+  Search,
+  Flame,
   ArrowLeft,
-  Mail,
+  Phone,
 } from "lucide-react";
 import { services, getServiceBySlug } from "@/data/services";
 import CTASection from "@/components/home/CTASection";
 
 const iconMap: Record<string, React.ElementType> = {
+  FileCheck,
+  HardHat,
+  CheckCircle2,
+  ClipboardCheck,
   BookOpen,
-  BarChart2,
-  TrendingUp,
-  Target,
-  PiggyBank,
-  Calculator,
+  FileText,
+  Building2,
+  Waves,
+  Search,
+  Flame,
+};
+
+const serviceImages: Record<string, { src: string; alt: string; pos: string }> = {
+  "complying-development-certificate": {
+    src: "/images/fadi-slab-check.jpg",
+    alt: "Fadi Habbouche conducting pre-pour slab inspection on residential site",
+    pos: "object-top",
+  },
+  "construction-certificate": {
+    src: "/images/project-roof-truss.jpg",
+    alt: "Timber roof truss structure at construction certificate stage",
+    pos: "object-center",
+  },
+  "occupation-certificate": {
+    src: "/images/fadi-frame-check.jpg",
+    alt: "Fadi Habbouche conducting final building inspection for occupation certificate",
+    pos: "object-top",
+  },
+  "principal-certifier-appointment": {
+    src: "/images/fadi-roadside.jpg",
+    alt: "Fadi Habbouche, Principal Certifier, inspecting construction site",
+    pos: "object-top",
+  },
+  "bca-ncc-compliance": {
+    src: "/images/fadi-duct-inspect.jpg",
+    alt: "Close-up BCA compliance inspection of building mechanical systems",
+    pos: "object-top",
+  },
+  "da-support": {
+    src: "/images/fadi-frame-team.jpg",
+    alt: "Development application site assessment in progress",
+    pos: "object-top",
+  },
+  "building-inspections": {
+    src: "/images/fadi-inspection-action.jpg",
+    alt: "Fadi Habbouche conducting critical stage building inspection with iPad",
+    pos: "object-top",
+  },
+  "fire-safety": {
+    src: "/images/fadi-frame-inspect.jpg",
+    alt: "Fire safety compliance inspection inside construction frame",
+    pos: "object-top",
+  },
 };
 
 type Props = {
@@ -38,7 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceBySlug(slug);
   if (!service) return {};
   return {
-    title: `${service.title} | Certify Right`,
+    title: `${service.title} | NSW Building Certification`,
     description: service.description,
     alternates: {
       canonical: `https://certifyright.com.au/services/${service.slug}`,
@@ -51,8 +102,9 @@ export default async function ServicePage({ params }: Props) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const Icon = iconMap[service.icon] || BookOpen;
+  const Icon = iconMap[service.icon] || FileText;
   const relatedServices = services.filter((s) => s.id !== service.id).slice(0, 3);
+  const serviceImg = serviceImages[service.slug];
 
   return (
     <>
@@ -84,7 +136,7 @@ export default async function ServicePage({ params }: Props) {
               {service.featured && (
                 <div className="mb-3">
                   <span className="bg-[#185FA5] text-white text-xs font-semibold px-3 py-1 rounded-full">
-                    Core Service
+                    Lead Service
                   </span>
                 </div>
               )}
@@ -103,31 +155,60 @@ export default async function ServicePage({ params }: Props) {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href="mailto:info@certifyright.com.au"
+                  href="tel:0423925514"
                   className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors"
                 >
-                  <Mail className="w-4 h-4" />
-                  Email Us
+                  <Phone className="w-4 h-4" />
+                  Call Fadi
                 </a>
               </div>
             </div>
-            {/* Features highlight */}
-            <div className="bg-white/5 rounded-2xl border border-white/10 p-7">
-              <div className="text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                Key Features
+
+            {/* Features highlight or service image (desktop) */}
+            {serviceImg ? (
+              <div className="hidden lg:block relative h-72 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src={serviceImg.src}
+                  alt={serviceImg.alt}
+                  fill
+                  className={`object-cover ${serviceImg.pos}`}
+                  sizes="(min-width: 1024px) 50vw, 0vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-[#0C2D5A]/15" />
               </div>
-              <ul className="space-y-3">
-                {service.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
-                    <span className="text-blue-100 text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ) : (
+              <div className="bg-white/5 rounded-2xl border border-white/10 p-7">
+                <div className="text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
+                  Key Features
+                </div>
+                <ul className="space-y-3">
+                  {service.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
+                      <span className="text-blue-100 text-sm">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </section>
+
+      {/* Mobile image banner — below hero on small screens for services with images */}
+      {serviceImg && (
+        <div className="lg:hidden relative h-56 overflow-hidden">
+          <Image
+            src={serviceImg.src}
+            alt={serviceImg.alt}
+            fill
+            className={`object-cover ${serviceImg.pos}`}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-[#0C2D5A]/20" />
+        </div>
+      )}
 
       {/* Content */}
       <section className="py-20 lg:py-24 bg-white">
@@ -145,6 +226,23 @@ export default async function ServicePage({ params }: Props) {
                   </p>
                 ))}
               </div>
+
+              {/* Key Features — shown in content for services that have an image in hero */}
+              {serviceImg && (
+                <div className="mt-10 bg-[#F8FAFC] rounded-2xl p-6 border border-slate-100">
+                  <h3 className="text-[#0C2D5A] font-bold text-lg mb-4">Key Features</h3>
+                  <ul className="space-y-3">
+                    {service.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3">
+                        <div className="w-5 h-5 bg-[#EEF4FC] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <CheckCircle2 className="w-3 h-3 text-[#185FA5]" />
+                        </div>
+                        <span className="text-slate-700 text-sm">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* Who is it for */}
               <div className="mt-10">
@@ -188,8 +286,8 @@ export default async function ServicePage({ params }: Props) {
               <div className="bg-[#0C2D5A] rounded-2xl p-7 text-white sticky top-28">
                 <h3 className="text-lg font-bold mb-4">Ready to Get Started?</h3>
                 <p className="text-blue-100 text-sm leading-relaxed mb-6">
-                  Get in touch to discuss your bookkeeping and accounting requirements.
-                  We will help you find the right level of support for your business.
+                  Contact Fadi directly to discuss your project. We respond within 24 hours
+                  and provide a quote promptly.
                 </p>
                 <div className="space-y-3">
                   <Link
@@ -200,22 +298,22 @@ export default async function ServicePage({ params }: Props) {
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <a
-                    href="mailto:info@certifyright.com.au"
+                    href="tel:0423925514"
                     className="flex items-center justify-center gap-2 border border-white/30 hover:border-white/60 text-white text-sm font-semibold px-5 py-3 rounded-lg transition-colors w-full"
                   >
-                    <Mail className="w-4 h-4" />
-                    Email Us
+                    <Phone className="w-4 h-4" />
+                    0423 925 514
                   </a>
                 </div>
                 <div className="mt-6 pt-5 border-t border-white/10 space-y-2">
                   <div className="text-xs text-blue-300">
-                    Hourly from <span className="text-white font-semibold">$10/hr</span>
+                    NSW Fair Trading Registered Building Surveyor
                   </div>
-                  <div className="text-xs text-blue-300">
-                    Monthly from <span className="text-white font-semibold">$1,000/mo</span>
+                  <div className="text-xs text-white font-semibold">
+                    Class A3 · BDC2868
                   </div>
-                  <div className="text-xs text-blue-300">
-                    20+ years professional experience
+                  <div className="text-xs text-blue-300 mt-1">
+                    Fadi Habbouche · 15+ Years Experience
                   </div>
                 </div>
               </div>
@@ -232,7 +330,7 @@ export default async function ServicePage({ params }: Props) {
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {relatedServices.map((s) => {
-              const SIcon = iconMap[s.icon] || BookOpen;
+              const SIcon = iconMap[s.icon] || FileText;
               return (
                 <Link
                   key={s.slug}

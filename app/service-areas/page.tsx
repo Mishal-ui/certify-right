@@ -1,27 +1,36 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Globe } from "lucide-react";
+import { ArrowRight, MapPin, CheckCircle2 } from "lucide-react";
 import CTASection from "@/components/home/CTASection";
 
 export const metadata: Metadata = {
-  title: "How We Work — Remote Bookkeeping & Accounting",
+  title: "Service Areas — NSW Building Certification",
   description:
-    "We provide professional bookkeeping and accounting support remotely, working with businesses across different locations. We adapt to the systems and processes your business already uses.",
+    "Certify Right provides NSW building certification services across Greater Sydney and regional NSW. Based in Merrylands, we cover Parramatta, Blacktown, Liverpool, Campbelltown, Hills District, Inner West, Eastern Suburbs and more.",
   alternates: { canonical: "https://certifyright.com.au/service-areas" },
 };
 
-const systems = [
-  "Oracle", "SAP", "QuickBooks", "Odoo", "Xero",
-  "Sage", "Zoho Books", "Microsoft Dynamics", "Customized Solutions",
+const sydneyZones = [
+  { zone: "Parramatta & Auburn", suburbs: ["Parramatta", "Auburn", "Merrylands", "Granville", "Harris Park", "Woodville"] },
+  { zone: "Blacktown & Hills", suburbs: ["Blacktown", "Seven Hills", "Pendle Hill", "Toongabbie", "Kings Langley", "Lalor Park"] },
+  { zone: "Hills District", suburbs: ["Castle Hill", "Baulkham Hills", "Kellyville", "Rouse Hill", "Norwest", "Bella Vista"] },
+  { zone: "Liverpool & Fairfield", suburbs: ["Liverpool", "Fairfield", "Cabramatta", "Canley Vale", "Wetherill Park", "Green Valley"] },
+  { zone: "Campbelltown & Macarthur", suburbs: ["Campbelltown", "Camden", "Narellan", "Leppington", "Oran Park"] },
+  { zone: "Penrith & Western Sydney", suburbs: ["Penrith", "St Marys", "Kingswood", "Glenmore Park", "Emu Plains"] },
+  { zone: "Sutherland & St George", suburbs: ["Sutherland", "Miranda", "Cronulla", "Hurstville", "Kogarah", "Rockdale"] },
+  { zone: "Bankstown & Canterbury", suburbs: ["Bankstown", "Lakemba", "Campsie", "Canterbury", "Belmore"] },
+  { zone: "Ryde & Meadowbank", suburbs: ["Ryde", "Meadowbank", "Shepherd's Bay", "Macquarie Park", "West Ryde"] },
+  { zone: "North Shore", suburbs: ["Chatswood", "Lane Cove", "Willoughby", "Hornsby", "Gordon", "Lindfield"] },
+  { zone: "Inner West", suburbs: ["Strathfield", "Burwood", "Ashfield", "Homebush", "Concord", "Drummoyne"] },
+  { zone: "Eastern Suburbs", suburbs: ["Randwick", "Maroubra", "Coogee", "Bondi", "Surry Hills", "Newtown"] },
 ];
 
-const capabilities = [
-  "Day-to-day bookkeeping and financial record keeping",
-  "Financial reporting and management accounts",
-  "Budgeting, forecasting and cost control",
-  "Accounts payable and receivable support",
-  "Bank reconciliations and ledger maintenance",
-  "Management consultancy and financial analysis",
+const regionalAreas = [
+  { area: "Central Coast", examples: "Gosford, Wyong, Terrigal, The Entrance" },
+  { area: "Wollongong & Illawarra", examples: "Wollongong, Shellharbour, Kiama, Port Kembla" },
+  { area: "Blue Mountains", examples: "Katoomba, Springwood, Penrith foothills" },
+  { area: "Southern Highlands", examples: "Bowral, Moss Vale, Mittagong" },
+  { area: "Surrounding NSW Regions", examples: "Contact us for coverage confirmation" },
 ];
 
 export default function ServiceAreasPage() {
@@ -43,92 +52,106 @@ export default function ServiceAreasPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">
               <span className="h-px w-8 bg-blue-400" />
-              <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">How We Work</span>
+              <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">Service Areas</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Remote Bookkeeping & Accounting Support
+              NSW Building Certification — Greater Sydney & Beyond
             </h1>
             <p className="text-blue-100 text-xl leading-relaxed max-w-2xl">
-              We provide professional bookkeeping and accounting support remotely, adapting to
-              the systems and processes your business already uses.
+              Based in Merrylands, Certify Right provides building certification across
+              Greater Sydney and regional NSW. Contact us to confirm coverage for your location.
             </p>
+            <div className="flex items-center gap-2 mt-6 text-blue-200">
+              <MapPin className="w-4 h-4 flex-shrink-0" />
+              <span className="text-sm">Head office: Merrylands NSW 2160</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Content */}
+      {/* Sydney zones */}
       <section className="py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start mb-16">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-blue-50 text-[#185FA5] text-sm font-semibold px-4 py-1.5 rounded-full mb-5">
-                <Globe className="w-4 h-4" />
-                Flexible & Remote
+          <div className="grid lg:grid-cols-3 gap-12 mb-16">
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-px w-8 bg-[#185FA5]" />
+                <span className="text-[#185FA5] text-xs font-semibold tracking-widest uppercase">Coverage</span>
               </div>
-              <h2 className="text-3xl font-bold text-[#0C2D5A] mb-6">
-                We Work With Your Business, Wherever You Are
+              <h2 className="text-3xl font-bold text-[#0C2D5A] mb-4 leading-tight">
+                Greater Sydney
               </h2>
-              <div className="space-y-4 text-slate-600 leading-relaxed mb-8">
-                <p>
-                  Our bookkeeping and accounting services are delivered remotely, allowing us to
-                  work with businesses across different locations efficiently and cost-effectively.
-                </p>
-                <p>
-                  We use modern tools and technology to access your accounting systems, communicate
-                  with your team, and deliver timely reports and updates — without the need for
-                  on-site presence.
-                </p>
-                <p>
-                  Whether you use a cloud-based platform like Xero or QuickBooks, or an enterprise
-                  system like Oracle or SAP, we adapt to your existing infrastructure so the
-                  transition to working with us is seamless.
-                </p>
+              <p className="text-slate-600 leading-relaxed mb-6">
+                We provide CDC, Construction Certificate, Occupation Certificate, Principal
+                Certifier, and inspection services across all major Greater Sydney areas.
+              </p>
+              <div className="bg-[#F8FAFC] rounded-xl p-5 border border-slate-100">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#185FA5] flex-shrink-0 mt-0.5" />
+                  <p className="text-slate-700 text-sm leading-relaxed">
+                    All 10 building certification services available across Greater Sydney.
+                    Contact us for a same-business-day response.
+                  </p>
+                </div>
               </div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-[#0C2D5A] text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-              >
-                Discuss Your Requirements
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
 
-            <div className="space-y-6">
-              {/* What we can do */}
-              <div className="bg-[#F8FAFC] rounded-2xl p-6 border border-slate-100">
-                <h3 className="text-[#0C2D5A] font-bold text-lg mb-4">What We Can Support</h3>
-                <ul className="space-y-2.5">
-                  {capabilities.map((cap) => (
-                    <li key={cap} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-4.5 h-4.5 text-[#185FA5] flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700 text-sm">{cap}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="lg:col-span-2">
+              <div className="grid sm:grid-cols-2 gap-4">
+                {sydneyZones.map((z) => (
+                  <div key={z.zone} className="bg-[#F8FAFC] rounded-xl p-4 border border-slate-100">
+                    <div className="flex items-center gap-2 mb-2">
+                      <MapPin className="w-3.5 h-3.5 text-[#185FA5] flex-shrink-0" />
+                      <span className="text-[#0C2D5A] font-semibold text-sm">{z.zone}</span>
+                    </div>
+                    <p className="text-slate-500 text-xs leading-relaxed pl-5">
+                      {z.suburbs.join(", ")}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Systems */}
+          {/* Regional */}
           <div className="bg-[#0C2D5A] rounded-2xl p-10 text-white">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-white mb-2">
-                Systems We Work With
-              </h2>
-              <p className="text-blue-100 max-w-xl mx-auto">
-                We work across all major accounting and ERP platforms.
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold text-white mb-2">Regional NSW</h2>
+              <p className="text-blue-100 max-w-2xl">
+                In addition to Greater Sydney, we extend coverage to regional NSW areas
+                on a project basis. Contact us with your location to confirm.
               </p>
             </div>
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-4">
-              {systems.map((sys) => (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {regionalAreas.map((r) => (
                 <div
-                  key={sys}
-                  className="bg-white/10 border border-white/10 rounded-xl p-3 text-center"
+                  key={r.area}
+                  className="bg-white/10 border border-white/10 rounded-xl p-4"
                 >
-                  <span className="text-white text-sm font-medium">{sys}</span>
+                  <div className="text-white font-semibold text-sm mb-1">{r.area}</div>
+                  <div className="text-blue-200 text-xs">{r.examples}</div>
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* CTA row */}
+          <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6 bg-[#F8FAFC] rounded-2xl p-8 border border-slate-100">
+            <div className="flex-1">
+              <h3 className="text-[#0C2D5A] font-bold text-lg mb-1">
+                Not sure if we cover your area?
+              </h3>
+              <p className="text-slate-600 text-sm">
+                Contact Fadi directly — we confirm coverage and provide a quote same business day.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-[#0C2D5A] text-white font-semibold px-6 py-3 rounded-lg transition-colors whitespace-nowrap"
+            >
+              Get a Quote
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

@@ -3,74 +3,76 @@ import { ArrowRight } from "lucide-react";
 
 const steps = [
   {
-    step: "01",
-    title: "Tell Us About Your Business",
+    number: "01",
+    title: "Tell Us About Your Project",
     description:
-      "Share your bookkeeping and accounting requirements with us. We will discuss your business, its current processes, and what level of support you are looking for.",
+      "Contact Fadi with your project details — property address, project type, and where you are in the process. We respond within 24 hours.",
   },
   {
-    step: "02",
-    title: "Choose Your Support Model",
+    number: "02",
+    title: "We Review Your Requirements",
     description:
-      "Select flexible hourly support for as-needed assistance, or a dedicated monthly accounting professional for ongoing, structured support.",
+      "We assess your project, identify the appropriate certification pathway (CDC, CC, or PCA), and provide a clear quote. No jargon, no surprises.",
   },
   {
-    step: "03",
-    title: "Choose Your Expertise Level",
+    number: "03",
+    title: "Certification & Inspections",
     description:
-      "Select a Bookkeeper, Accounting Supervisor, or Accounting Manager based on the complexity and requirements of your business.",
+      "Once engaged, we handle your certificate application and coordinate all required critical stage inspections throughout construction.",
   },
   {
-    step: "04",
-    title: "Get Started",
+    number: "04",
+    title: "Keep Your Project Moving",
     description:
-      "We agree on the scope of work, assign the appropriate professional, and begin supporting your business — keeping your financial records accurate and up to date.",
+      "We respond promptly, communicate clearly, and work to resolve any issues quickly — so your project stays on schedule from approval to occupation.",
   },
 ];
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-16 lg:py-24 bg-[#0C2D5A]">
+    <section className="py-20 lg:py-24 bg-[#0C2D5A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/10 text-blue-200 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-            How It Works
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="h-px w-8 bg-blue-400" />
+            <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">
+              How It Works
+            </span>
+            <span className="h-px w-8 bg-blue-400" />
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Getting Started Is Simple
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+            Simple. Transparent. Responsive.
           </h2>
-          <p className="text-blue-100 text-lg max-w-xl mx-auto">
-            Four simple steps to get professional accounting support for your business.
+          <p className="text-blue-100 leading-relaxed">
+            From your first call to your Occupation Certificate — here is what working
+            with Certify Right looks like.
           </p>
         </div>
 
-        {/* Steps */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {steps.map((step, idx) => (
-            <div key={step.step} className="relative">
-              {idx < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-white/10 z-0" style={{ width: "calc(100% - 2rem)", left: "calc(50% + 1.5rem)" }} />
+          {steps.map((step, i) => (
+            <div key={step.number} className="relative">
+              {i < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-white/10 z-0 -translate-y-0.5" />
               )}
-              <div className="relative z-10 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors rounded-2xl p-6">
-                <div className="w-14 h-14 bg-[#185FA5]/40 rounded-xl flex items-center justify-center mb-5">
-                  <span className="text-white font-bold text-xl">{step.step}</span>
+              <div className="relative bg-white/10 border border-white/10 rounded-2xl p-6">
+                <div className="text-4xl font-bold text-white/20 mb-4 leading-none">
+                  {step.number}
                 </div>
-                <h3 className="text-white font-semibold text-lg mb-3">{step.title}</h3>
-                <p className="text-blue-100 text-sm leading-relaxed">{step.description}</p>
+                <h3 className="text-white font-bold text-base mb-2">{step.title}</h3>
+                <p className="text-blue-200 text-sm leading-relaxed">{step.description}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
         <div className="text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-white hover:text-[#0C2D5A] text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
+            className="inline-flex items-center gap-2 bg-white text-[#0C2D5A] hover:bg-blue-50 font-bold px-8 py-4 rounded-xl transition-colors"
           >
-            Start Today
-            <ArrowRight className="w-5 h-5" />
+            Get a Quote Within 24 Hours
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

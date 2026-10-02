@@ -8,7 +8,7 @@ interface FormData {
   phone: string;
   email: string;
   service: string;
-  businessName: string;
+  propertyAddress: string;
   description: string;
   file: File | null;
 }
@@ -18,21 +18,25 @@ interface FormErrors {
   phone?: string;
   email?: string;
   service?: string;
-  businessName?: string;
+  propertyAddress?: string;
   description?: string;
   file?: string;
 }
 
 const serviceOptions = [
   { value: "", label: "Select a service..." },
-  { value: "bookkeeping", label: "Bookkeeping" },
-  { value: "financial-reporting", label: "Financial Reporting" },
-  { value: "management-consultancy", label: "Management Consultancy" },
-  { value: "budgeting-forecasting", label: "Budgeting & Forecasting" },
-  { value: "cost-control", label: "Cost Control" },
-  { value: "actuarial-valuation", label: "Actuarial Valuation" },
+  { value: "cdc", label: "Complying Development Certificate (CDC)" },
+  { value: "construction-certificate", label: "Construction Certificate" },
+  { value: "occupation-certificate", label: "Occupation Certificate" },
+  { value: "principal-certifier", label: "Principal Certifier Appointment" },
+  { value: "bca-compliance", label: "BCA / NCC Compliance Advice" },
+  { value: "da-support", label: "DA Support" },
+  { value: "demolition", label: "Demolition Certificate" },
+  { value: "swimming-pool", label: "Swimming Pool Compliance" },
+  { value: "building-inspections", label: "Building Inspections" },
+  { value: "fire-safety", label: "Fire Safety" },
   { value: "other", label: "Other" },
-  { value: "not-sure", label: "Not Sure" },
+  { value: "not-sure", label: "Not Sure — Happy to Discuss" },
 ];
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
@@ -51,7 +55,7 @@ export default function ContactForm() {
     phone: "",
     email: "",
     service: "",
-    businessName: "",
+    propertyAddress: "",
     description: "",
     file: null,
   });
@@ -73,7 +77,7 @@ export default function ContactForm() {
       e.email = "Please enter a valid email address.";
     }
     if (!formData.service) e.service = "Please select a service.";
-    if (!formData.businessName.trim()) e.businessName = "Business name is required.";
+    if (!formData.propertyAddress.trim()) e.propertyAddress = "Property address is required.";
     if (!formData.description.trim()) {
       e.description = "Please provide a brief project description.";
     } else if (formData.description.trim().length < 10) {
@@ -122,7 +126,6 @@ export default function ContactForm() {
     }
     setStatus("submitting");
     // TODO: Replace with real API call
-    // Example: await fetch("/api/contact", { method: "POST", body: formData })
     await new Promise((r) => setTimeout(r, 1500));
     setStatus("success");
   };
@@ -140,9 +143,9 @@ export default function ContactForm() {
           Thank you, <strong>{formData.fullName}</strong>. We&apos;ve received your enquiry and will be in touch promptly.
         </p>
         <p className="text-slate-500 text-sm">
-          If you need to reach us urgently, email us at{" "}
-          <a href="mailto:info@certifyright.com.au" className="text-[#185FA5] font-semibold hover:underline">
-            info@certifyright.com.au
+          If you need to speak to Fadi directly, call{" "}
+          <a href="tel:0423925514" className="text-[#185FA5] font-semibold hover:underline">
+            0423 925 514
           </a>
           .
         </p>
@@ -156,16 +159,16 @@ export default function ContactForm() {
         Send an Enquiry
       </h2>
       <p className="text-slate-500 text-sm mb-8">
-        Tell us about your business and accounting requirements and we will get back to you promptly.
+        Tell us about your project and we will get back to you within 24 hours with a quote.
       </p>
 
       {status === "error" && (
         <div className="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl p-4 mb-6">
           <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
           <p className="text-red-700 text-sm">
-            Something went wrong. Please try again or email us at{" "}
-            <a href="mailto:info@certifyright.com.au" className="font-semibold underline">
-              info@certifyright.com.au
+            Something went wrong. Please try again or call Fadi on{" "}
+            <a href="tel:0423925514" className="font-semibold underline">
+              0423 925 514
             </a>
             .
           </p>
@@ -264,31 +267,31 @@ export default function ContactForm() {
           )}
         </div>
 
-        {/* Business name */}
+        {/* Property address */}
         <div>
-          <label htmlFor="businessName" className="block text-sm font-semibold text-[#0C2D5A] mb-1.5">
-            Business Name <span className="text-red-500">*</span>
+          <label htmlFor="propertyAddress" className="block text-sm font-semibold text-[#0C2D5A] mb-1.5">
+            Property Address <span className="text-red-500">*</span>
           </label>
           <input
-            id="businessName"
-            name="businessName"
+            id="propertyAddress"
+            name="propertyAddress"
             type="text"
-            value={formData.businessName}
+            value={formData.propertyAddress}
             onChange={handleChange}
-            placeholder="Your business or organisation name"
+            placeholder="12 Example St, Merrylands NSW 2160"
             className={`w-full px-4 py-3 rounded-xl border text-sm bg-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] transition-colors ${
-              errors.businessName ? "border-red-300" : "border-slate-200"
+              errors.propertyAddress ? "border-red-300" : "border-slate-200"
             }`}
           />
-          {errors.businessName && (
-            <p className="mt-1.5 text-red-600 text-xs">{errors.businessName}</p>
+          {errors.propertyAddress && (
+            <p className="mt-1.5 text-red-600 text-xs">{errors.propertyAddress}</p>
           )}
         </div>
 
         {/* Description */}
         <div>
           <label htmlFor="description" className="block text-sm font-semibold text-[#0C2D5A] mb-1.5">
-            Tell Us About Your Requirements <span className="text-red-500">*</span>
+            Tell Us About Your Project <span className="text-red-500">*</span>
           </label>
           <textarea
             id="description"
@@ -296,7 +299,7 @@ export default function ContactForm() {
             rows={4}
             value={formData.description}
             onChange={handleChange}
-            placeholder="Briefly describe your bookkeeping and accounting requirements — e.g. monthly bookkeeping, financial reporting, payroll support…"
+            placeholder="Briefly describe your project — e.g. new single dwelling CDC, granny flat, extension, swimming pool compliance, building inspections…"
             className={`w-full px-4 py-3 rounded-xl border text-sm bg-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] transition-colors resize-none ${
               errors.description ? "border-red-300" : "border-slate-200"
             }`}
@@ -309,7 +312,7 @@ export default function ContactForm() {
         {/* File upload */}
         <div>
           <label className="block text-sm font-semibold text-[#0C2D5A] mb-1.5">
-            Attach a Document{" "}
+            Attach Plans or Documents{" "}
             <span className="text-slate-400 font-normal">(Optional)</span>
           </label>
           <p className="text-slate-400 text-xs mb-2">

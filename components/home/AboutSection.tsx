@@ -1,80 +1,80 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-const pillars = [
-  {
-    badge: "Experience",
-    title: "20+ Years of Professional Experience",
-    description:
-      "With over 20 years of experience, we bring extensive knowledge and practical expertise in bookkeeping, accounting, and financial management. We provide accurate, reliable solutions tailored to each client's needs.",
-  },
-  {
-    badge: "Value",
-    title: "Reliable Bookkeeping at a Lower Cost",
-    description:
-      "Our efficient approach helps businesses reduce bookkeeping costs while maintaining accuracy and quality. We handle essential accounting tasks so you can focus on your core business and growth.",
-  },
-  {
-    badge: "Solutions",
-    title: "Bookkeeping & Accounting Solutions That Fit Your Business",
-    description:
-      "We provide bookkeeping, financial reporting, management accounts, budgeting, forecasting, and cost control. Our services can be tailored to your needs and scaled as your business grows.",
-  },
-  {
-    badge: "Approach",
-    title: "Professional, Flexible & Technology-Driven",
-    description:
-      "We combine professional expertise with modern accounting systems and technology to keep financial records accurate and up to date. Our approach adapts to your processes, systems, and business requirements.",
-  },
+const trustPoints = [
+  "NSW Fair Trading Registered Building Surveyor",
+  "15+ years across civil engineering and building surveying",
+  "Class A3 certification (BDC2868)",
+  "AIBS and AAC member",
+  "Plain-English communication — no jargon",
+  "24-hour quote turnaround",
 ];
 
 export default function AboutSection() {
   return (
-    <section className="py-16 lg:py-24 bg-[#F8FAFC]">
+    <section className="py-20 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left column: intro */}
-          <div className="lg:sticky lg:top-32">
-            <div className="inline-flex items-center gap-2 bg-blue-50 text-[#185FA5] text-sm font-semibold px-4 py-1.5 rounded-full mb-5">
-              About Us
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="h-px w-8 bg-[#185FA5]" />
+              <span className="text-[#185FA5] text-xs font-semibold tracking-widest uppercase">
+                About Certify Right
+              </span>
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-[#0C2D5A] mb-6 leading-tight">
-              Professional Bookkeeping, Accounting & Financial Support
+              Certification Made Clear
             </h2>
-            <p className="text-slate-600 text-lg leading-relaxed mb-8">
-              With 20+ years of professional experience, we provide reliable, practical,
-              and cost-effective bookkeeping and accounting solutions tailored to your business.
-              From maintaining accurate financial records and delivering timely reports to
-              providing flexible ongoing support, we help you stay financially organized,
-              gain better visibility, and focus on running and growing your business.
-            </p>
+            <div className="space-y-4 text-slate-600 leading-relaxed mb-8">
+              <p>
+                Certify Right provides NSW building certification services for homeowners, builders,
+                developers, and granny flat companies across Greater Sydney and NSW.
+              </p>
+              <p>
+                We are operated by Fadi Habbouche — a Civil Engineer and NSW Fair Trading
+                Registered Building Surveyor with over 15 years of experience across building
+                surveying, council compliance, building design, and fire safety. Fadi holds
+                Class A3 registration (BDC2868) and is a member of AIBS and AAC.
+              </p>
+              <p>
+                Our approach is straightforward: we give you clear answers, respond promptly,
+                and focus on keeping your project moving rather than creating unnecessary
+                delays or complications.
+              </p>
+            </div>
             <Link
               href="/about"
               className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-[#0C2D5A] text-white font-semibold px-6 py-3 rounded-lg transition-colors"
             >
-              Learn More About Us
+              About Fadi
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Right column: pillars */}
-          <div className="space-y-6">
-            {pillars.map((pillar) => (
-              <div
-                key={pillar.badge}
-                className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="inline-flex items-center gap-2 bg-blue-50 text-[#185FA5] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
-                  {pillar.badge}
-                </div>
-                <h3 className="text-[#0C2D5A] font-semibold text-lg mb-2">
-                  {pillar.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {pillar.description}
-                </p>
+          {/* Right */}
+          <div className="space-y-4">
+            <div className="bg-[#F8FAFC] rounded-2xl p-7 border border-slate-100">
+              <h3 className="text-[#0C2D5A] font-bold text-base mb-4">Why Certify Right</h3>
+              <ul className="space-y-3">
+                {trustPoints.map((point) => (
+                  <li key={point} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-4.5 h-4.5 text-[#185FA5] flex-shrink-0 mt-0.5" />
+                    <span className="text-slate-700 text-sm">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-[#0C2D5A] rounded-2xl p-6 text-white text-center">
+                <div className="text-4xl font-bold mb-1">15+</div>
+                <div className="text-blue-200 text-xs font-medium">Years Experience</div>
               </div>
-            ))}
+              <div className="bg-[#185FA5] rounded-2xl p-6 text-white text-center">
+                <div className="text-4xl font-bold mb-1">10</div>
+                <div className="text-blue-100 text-xs font-medium">Certification Services</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
