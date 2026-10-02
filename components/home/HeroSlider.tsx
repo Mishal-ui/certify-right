@@ -1,335 +1,290 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  Phone,
-  Award,
-  Clock,
-  MapPin,
-  Shield,
-} from "lucide-react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ChevronLeft, ChevronRight, ArrowRight, CheckCircle } from "lucide-react";
 
 const slides = [
   {
-    id: 0,
-    eyebrow: "NSW BUILDING CERTIFICATION",
-    headline: ["Fast. Clear.", "Responsive. Done Right."],
-    body: "Builders, developers and homeowners across NSW can deal directly with an experienced Registered Building Surveyor.",
-    cta: { label: "Get a Quote", href: "/contact" },
-    ctaSecondary: { label: "Call Fadi  0423 925 514", href: "tel:0423925514" },
-    accentColor: "#185FA5",
-    trust: [
-      { icon: Award, label: "15+ Years Experience" },
-      { icon: Shield, label: "NSW Registered Building Surveyor" },
-      { icon: Clock, label: "24-Hour Quote Turnaround" },
-      { icon: MapPin, label: "NSW-Wide Service" },
-    ],
-  },
-  {
     id: 1,
-    eyebrow: "COMPLYING DEVELOPMENT CERTIFICATES",
-    headline: ["Certification", "Made Clear."],
-    body: "We assess your project against NSW planning standards and guide you through every step — from your first enquiry to your occupation certificate.",
-    cta: { label: "Explore Our Services", href: "/services" },
-    ctaSecondary: { label: "Learn About CDCs", href: "/services/complying-development-certificate" },
-    accentColor: "#185FA5",
-    trust: [
-      { icon: Award, label: "CDC Specialists" },
-      { icon: Shield, label: "Class A3 Registered" },
-      { icon: Clock, label: "Fast Turnaround" },
-      { icon: MapPin, label: "No Council Required" },
+    eyebrow: "Professional Accounting Support",
+    headline: "Accurate Numbers.\nClear Insights.\nSmarter Decisions.",
+    description:
+      "With 20+ years of professional experience, we provide reliable, practical, and cost-effective bookkeeping and accounting solutions tailored to your business.",
+    cta: { label: "Get a Quote", href: "/contact" },
+    secondary: { label: "Our Services", href: "/services" },
+    stats: [
+      { value: "20+", label: "Years Experience" },
+      { value: "9+", label: "Systems Supported" },
+    ],
+    highlights: [
+      "Accurate financial records",
+      "Flexible support options",
+      "Cost-effective solutions",
     ],
   },
   {
     id: 2,
-    eyebrow: "PRINCIPAL CERTIFIER SERVICES",
-    headline: ["Keeping Your", "Project Moving."],
-    body: "From the first critical stage inspection to your final occupation certificate — Certify Right keeps your project on track with responsive, reliable service.",
-    cta: { label: "Appoint Us as Your Certifier", href: "/contact" },
-    ctaSecondary: { label: "View All Services", href: "/services" },
-    accentColor: "#185FA5",
-    trust: [
-      { icon: Award, label: "Civil Engineering Background" },
-      { icon: Shield, label: "Accredited BDC2868" },
-      { icon: Clock, label: "Prompt Inspections" },
-      { icon: MapPin, label: "Greater Sydney & Beyond" },
+    eyebrow: "Bookkeeping & Financial Reporting",
+    headline: "Your Books.\nIn Order.\nEvery Time.",
+    description:
+      "From day-to-day bookkeeping to management accounts and financial reporting — we keep your financial records accurate, organized, and up to date.",
+    cta: { label: "View Pricing", href: "/contact#pricing" },
+    secondary: { label: "How It Works", href: "/#how-it-works" },
+    stats: [
+      { value: "3", label: "Expertise Levels" },
+      { value: "2", label: "Flexible Plans" },
+    ],
+    highlights: [
+      "Bookkeeper from $10/hr",
+      "Dedicated monthly professionals",
+      "No lock-in contracts",
+    ],
+  },
+  {
+    id: 3,
+    eyebrow: "Technology-Driven Approach",
+    headline: "We Work With\nYour Systems\nAnd Processes.",
+    description:
+      "We work with leading accounting and ERP systems — Oracle, SAP, QuickBooks, Xero, and more. We adapt to the tools and workflows your business already uses.",
+    cta: { label: "Start Today", href: "/contact" },
+    secondary: { label: "Systems We Use", href: "/services" },
+    stats: [
+      { value: "9", label: "Platforms Supported" },
+      { value: "5/7", label: "Days a Week" },
+    ],
+    highlights: [
+      "Oracle, SAP, QuickBooks",
+      "Xero, Sage, Odoo & more",
+      "Custom ERP solutions",
     ],
   },
 ];
 
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const prefersReduced = useReducedMotion();
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const INTERVAL = 5500;
+  const [direction, setDirection] = useState(1);
+  const shouldReduceMotion = useReducedMotion();
 
-  const goTo = useCallback((index: number) => {
-    setCurrent(index);
-  }, []);
-
-  const next = useCallback(() => {
-    setCurrent((c) => (c + 1) % slides.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setCurrent((c) => (c - 1 + slides.length) % slides.length);
-  }, []);
-
-  const pauseAutoPlay = useCallback(() => {
-    setIsAutoPlaying(false);
-    if (timerRef.current) clearInterval(timerRef.current);
-  }, []);
-
-  const resumeAutoPlay = useCallback(() => {
-    setIsAutoPlaying(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isAutoPlaying || prefersReduced) return;
-    timerRef.current = setInterval(next, INTERVAL);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isAutoPlaying, next, prefersReduced]);
-
-  // Touch/swipe support
-  const touchStartX = useRef<number | null>(null);
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    pauseAutoPlay();
-  };
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) {
-      diff > 0 ? next() : prev();
-    }
-    touchStartX.current = null;
-  };
-
-  // Keyboard
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === "ArrowLeft") { prev(); pauseAutoPlay(); }
-      if (e.key === "ArrowRight") { next(); pauseAutoPlay(); }
+  const goTo = useCallback(
+    (index: number, dir: number) => {
+      setDirection(dir);
+      setCurrent(index);
     },
-    [prev, next, pauseAutoPlay]
+    []
   );
 
-  const slideVariants = {
-    enter: { opacity: 0, x: prefersReduced ? 0 : 40 },
-    center: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: prefersReduced ? 0 : -40 },
+  const prev = useCallback(() => {
+    goTo((current - 1 + slides.length) % slides.length, -1);
+  }, [current, goTo]);
+
+  const next = useCallback(() => {
+    goTo((current + 1) % slides.length, 1);
+  }, [current, goTo]);
+
+  useEffect(() => {
+    const id = setInterval(next, 5500);
+    return () => clearInterval(id);
+  }, [next]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [prev, next]);
+
+  const variants = {
+    enter: (dir: number) => ({
+      x: shouldReduceMotion ? 0 : dir * 60,
+      opacity: 0,
+    }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({
+      x: shouldReduceMotion ? 0 : dir * -60,
+      opacity: 0,
+    }),
   };
 
   const slide = slides[current];
 
   return (
     <section
-      className="relative min-h-[600px] lg:min-h-[680px] bg-[#0C2D5A] overflow-hidden"
+      className="relative bg-[#0C2D5A] overflow-hidden min-h-[600px] lg:min-h-[680px]"
       aria-label="Hero slider"
-      onKeyDown={handleKeyDown}
-      tabIndex={0}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="grid"
-              width="40"
-              height="40"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 40 0 L 0 0 0 40"
-                fill="none"
-                stroke="white"
-                strokeWidth="1"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 25% 25%, #185FA5 0%, transparent 50%), radial-gradient(circle at 75% 75%, #185FA5 0%, transparent 50%)",
+          }}
+        />
       </div>
 
-      {/* Accent shape */}
-      <div
-        className="absolute top-0 right-0 w-1/2 h-full bg-[#185FA5] opacity-10 -skew-x-6 translate-x-20"
-        aria-hidden="true"
-      />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[520px] lg:min-h-[580px]">
-          {/* Left: content */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: prefersReduced ? 0 : 0.4, ease: "easeInOut" }}
-              className="text-white z-10"
-            >
-              {/* Eyebrow */}
-              <div className="inline-flex items-center gap-2 mb-5">
-                <span className="h-px w-8 bg-blue-400" />
-                <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">
-                  {slide.eyebrow}
-                </span>
-              </div>
-
-              {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                {slide.headline.map((line, i) => (
-                  <span key={i} className="block">
-                    {line}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Text content */}
+          <div className="order-2 lg:order-1">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={slide.id}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="space-y-6"
+              >
+                {/* Eyebrow */}
+                <div className="inline-flex items-center gap-2 bg-[#185FA5]/30 border border-[#185FA5]/40 rounded-full px-4 py-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#185FA5]" />
+                  <span className="text-blue-200 text-sm font-medium">
+                    {slide.eyebrow}
                   </span>
-                ))}
-              </h1>
+                </div>
 
-              {/* Body */}
-              <p className="text-blue-100 text-lg leading-relaxed mb-8 max-w-lg">
-                {slide.body}
-              </p>
+                {/* Headline */}
+                <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight whitespace-pre-line">
+                  {slide.headline}
+                </h1>
 
-              {/* CTAs */}
-              <div className="flex flex-wrap gap-4 mb-10">
-                <Link
-                  href={slide.cta.href}
-                  className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-blue-600 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors text-sm"
-                >
-                  {slide.cta.label}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <a
-                  href={slide.ctaSecondary.href}
-                  className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors text-sm backdrop-blur-sm"
-                >
-                  {slide.ctaSecondary.href.startsWith("tel") && (
-                    <Phone className="w-4 h-4" />
-                  )}
-                  {slide.ctaSecondary.label}
-                </a>
-              </div>
+                {/* Description */}
+                <p className="text-blue-100 text-lg leading-relaxed max-w-lg">
+                  {slide.description}
+                </p>
 
-              {/* Trust indicators */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {slide.trust.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <div
-                      key={item.label}
-                      className="flex items-center gap-2 bg-white/8 rounded-lg px-3 py-2.5 border border-white/10"
-                    >
-                      <Icon className="w-4 h-4 text-blue-300 flex-shrink-0" />
-                      <span className="text-blue-100 text-xs font-medium leading-tight">
-                        {item.label}
-                      </span>
+                {/* Highlights */}
+                <ul className="space-y-2">
+                  {slide.highlights.map((h) => (
+                    <li key={h} className="flex items-center gap-2.5 text-blue-100 text-sm">
+                      <CheckCircle className="w-4 h-4 text-[#185FA5] flex-shrink-0" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTAs */}
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <Link
+                    href={slide.cta.href}
+                    className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-white hover:text-[#0C2D5A] text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                  >
+                    {slide.cta.label}
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href={slide.secondary.href}
+                    className="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white hover:bg-white/10 font-medium px-6 py-3 rounded-lg transition-colors"
+                  >
+                    {slide.secondary.label}
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right: Stats card */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={`card-${slide.id}`}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.4, ease: "easeInOut", delay: 0.1 }}
+                className="w-full max-w-sm"
+              >
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 space-y-6">
+                  {/* Stats */}
+                  <div className="grid grid-cols-2 gap-4">
+                    {slide.stats.map((stat) => (
+                      <div
+                        key={stat.label}
+                        className="bg-white/10 rounded-xl p-4 text-center"
+                      >
+                        <div className="text-3xl font-bold text-white mb-1">
+                          {stat.value}
+                        </div>
+                        <div className="text-blue-200 text-xs font-medium">
+                          {stat.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Plans preview */}
+                  <div className="space-y-3">
+                    <div className="text-blue-200 text-xs font-semibold uppercase tracking-wider">
+                      Engagement Options
                     </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                    <div className="flex gap-2">
+                      <div className="flex-1 bg-white/10 rounded-lg p-3 text-center">
+                        <div className="text-white font-bold text-sm">Hourly</div>
+                        <div className="text-blue-200 text-xs mt-1">from $10/hr</div>
+                      </div>
+                      <div className="flex-1 bg-[#185FA5]/50 rounded-lg p-3 text-center border border-[#185FA5]/60">
+                        <div className="text-white font-bold text-sm">Monthly</div>
+                        <div className="text-blue-200 text-xs mt-1">from $1,000/mo</div>
+                      </div>
+                    </div>
+                  </div>
 
-          {/* Right: visual */}
-          <div className="hidden lg:flex items-center justify-center relative">
-            <div className="relative">
-              {/* Profile card */}
-              <div className="w-72 h-80 bg-white/8 rounded-2xl border border-white/15 flex items-end overflow-hidden">
-                {/* Placeholder for Fadi image */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0C2D5A] via-transparent to-transparent" />
-                <div className="relative w-full p-6">
-                  <div className="text-white font-bold text-xl">
-                    Fadi Habbouche
-                  </div>
-                  <div className="text-blue-200 text-sm">
-                    Principal Certifier
-                  </div>
-                  <div className="text-blue-300 text-xs mt-1">
-                    Registered Building Surveyor — Class A3
-                  </div>
-                  <div className="mt-3 flex gap-2 flex-wrap">
-                    <span className="bg-[#185FA5]/60 text-blue-100 text-xs px-2.5 py-1 rounded-full border border-white/15">
-                      BDC2868
-                    </span>
-                    <span className="bg-[#185FA5]/60 text-blue-100 text-xs px-2.5 py-1 rounded-full border border-white/15">
-                      Civil Engineer
-                    </span>
-                    <span className="bg-[#185FA5]/60 text-blue-100 text-xs px-2.5 py-1 rounded-full border border-white/15">
-                      NSW Licensed
-                    </span>
+                  <div className="text-blue-200 text-xs text-center">
+                    Professional bookkeeping & accounting support
                   </div>
                 </div>
-              </div>
-
-              {/* Floating stat cards */}
-              <div className="absolute -top-4 -right-8 bg-white rounded-xl shadow-xl px-4 py-3 border border-slate-100">
-                <div className="text-2xl font-bold text-[#0C2D5A]">15+</div>
-                <div className="text-xs text-slate-500">Years Experience</div>
-              </div>
-              <div className="absolute -bottom-4 -left-8 bg-white rounded-xl shadow-xl px-4 py-3 border border-slate-100">
-                <div className="text-2xl font-bold text-[#185FA5]">24hr</div>
-                <div className="text-xs text-slate-500">Quote Turnaround</div>
-              </div>
-            </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
 
       {/* Controls */}
-      <div className="absolute bottom-6 left-0 right-0 flex items-center justify-center gap-6">
-        {/* Prev */}
-        <button
-          onClick={() => { prev(); pauseAutoPlay(); }}
-          aria-label="Previous slide"
-          className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white border border-white/20 transition-colors"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
+      <div className="absolute bottom-8 left-0 right-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Dots */}
+          <div className="flex items-center gap-2" role="tablist" aria-label="Slides">
+            {slides.map((s, i) => (
+              <button
+                key={s.id}
+                role="tab"
+                aria-selected={i === current}
+                aria-label={`Slide ${i + 1}`}
+                onClick={() => goTo(i, i > current ? 1 : -1)}
+                className={`transition-all duration-300 rounded-full ${
+                  i === current ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            ))}
+          </div>
 
-        {/* Pagination dots */}
-        <div
-          className="flex items-center gap-2"
-          role="tablist"
-          aria-label="Slide indicators"
-        >
-          {slides.map((s, i) => (
+          {/* Prev / Next */}
+          <div className="flex items-center gap-2">
             <button
-              key={s.id}
-              role="tab"
-              aria-selected={i === current}
-              aria-label={`Go to slide ${i + 1}`}
-              onClick={() => { goTo(i); pauseAutoPlay(); }}
-              onMouseEnter={pauseAutoPlay}
-              onMouseLeave={resumeAutoPlay}
-              className={`rounded-full transition-all duration-300 ${
-                i === current
-                  ? "w-8 h-2.5 bg-white"
-                  : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"
-              }`}
-            />
-          ))}
+              onClick={prev}
+              aria-label="Previous slide"
+              className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next slide"
+              className="w-9 h-9 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
-
-        {/* Next */}
-        <button
-          onClick={() => { next(); pauseAutoPlay(); }}
-          aria-label="Next slide"
-          className="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white border border-white/20 transition-colors"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
       </div>
     </section>
   );

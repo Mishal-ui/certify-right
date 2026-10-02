@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, Phone, ArrowRight } from "lucide-react";
+import { ChevronDown, Mail, ArrowRight } from "lucide-react";
 import { faqs } from "@/data/faqs";
 import CTASection from "@/components/home/CTASection";
 
-const categories = ["All", "General", "CDC", "Inspections"];
+const categories = ["All", "General", "Plans"];
 
 function AccordionItem({
   faq,
@@ -84,14 +84,14 @@ export default function FAQsPage() {
               Frequently Asked Questions
             </h1>
             <p className="text-blue-100 text-xl leading-relaxed max-w-2xl">
-              Common questions about building certification, CDCs, inspections and more. Can't find your answer? Call Fadi directly.
+              Common questions about our bookkeeping, accounting services, and pricing plans. Can&apos;t find your answer? Get in touch.
             </p>
             <a
-              href="tel:0423925514"
+              href="mailto:info@certifyright.com.au"
               className="inline-flex items-center gap-2 mt-6 text-blue-200 hover:text-white transition-colors text-sm"
             >
-              <Phone className="w-4 h-4" />
-              0423 925 514
+              <Mail className="w-4 h-4" />
+              info@certifyright.com.au
             </a>
           </div>
         </div>
@@ -134,15 +134,15 @@ export default function FAQsPage() {
               Still Have Questions?
             </h2>
             <p className="text-slate-600 mb-6">
-              Speak directly with Fadi Habbouche — our registered building surveyor. No front desk, no delays.
+              Get in touch and we will help you find the right level of support for your business.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <a
-                href="tel:0423925514"
+                href="mailto:info@certifyright.com.au"
                 className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-[#0C2D5A] text-white font-semibold px-6 py-3 rounded-lg transition-colors"
               >
-                <Phone className="w-4 h-4" />
-                Call 0423 925 514
+                <Mail className="w-4 h-4" />
+                Email Us
               </a>
               <Link
                 href="/contact"

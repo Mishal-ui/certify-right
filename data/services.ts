@@ -3,7 +3,6 @@ export interface Service {
   slug: string;
   title: string;
   shortTitle: string;
-  acronym?: string;
   tagline: string;
   description: string;
   longDescription: string;
@@ -16,350 +15,221 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    id: "cdc",
-    slug: "complying-development-certificate",
-    title: "Complying Development Certificate (CDC)",
-    shortTitle: "CDC",
-    acronym: "CDC",
-    tagline: "Fast-track approval for eligible residential projects — no council required.",
+    id: "bookkeeping",
+    slug: "bookkeeping",
+    title: "Bookkeeping",
+    shortTitle: "Bookkeeping",
+    tagline: "Professional day-to-day bookkeeping support to keep your financial records accurate, organized, and up to date.",
     description:
-      "A Complying Development Certificate (CDC) is a fast-track approval for residential, commercial and industrial development that meets specific pre-determined standards under NSW planning legislation. It bypasses the traditional council development application process.",
-    longDescription: `A Complying Development Certificate (CDC) is one of the most efficient pathways to building approval in NSW. If your project meets the relevant development standards, a CDC can be issued by a private certifier — no council involvement required.
+      "Our core service — professional day-to-day bookkeeping support to keep your financial records accurate, organized, and up to date. Whether you need occasional assistance or ongoing bookkeeping support, we provide flexible solutions based on your business requirements.",
+    longDescription: `Accurate bookkeeping is the foundation of sound financial management. Without reliable records, it is difficult to understand business performance, prepare timely reports, or make informed decisions.
 
-Certify Right specialises in CDC assessments for residential projects across NSW. We assess your plans against the applicable State Environmental Planning Policy (SEPP), provide clear guidance on what's required, and issue your certificate quickly once all conditions are met.
+Our bookkeeping service provides professional, day-to-day support to keep your financial records organized and up to date. We handle the routine accounting tasks that take time away from running your business — data entry, reconciliations, transaction coding, and maintaining accurate ledgers.
 
-Common CDC projects include new homes, granny flats, additions and alterations, swimming pools, and other residential structures that meet the complying development criteria.`,
+Whether you need occasional assistance to catch up on outstanding bookkeeping, or ongoing support to manage your financial records on a regular basis, we provide flexible arrangements based on your business requirements. We work with leading accounting systems including QuickBooks, Xero, Sage, Oracle, SAP, and others, and can adapt to the systems and processes your business already uses.`,
     features: [
-      "No council involvement required",
-      "Faster approval timeframes",
-      "Clear, pre-determined assessment criteria",
-      "Applies to residential, commercial and industrial development",
-      "Issued under State Environmental Planning Policy (SEPP)",
-      "Combined approval — development consent and construction certificate in one",
+      "Accurate and organized financial records",
+      "Bank and account reconciliations",
+      "Transaction coding and data entry",
+      "Accounts payable and receivable support",
+      "Flexible ongoing or occasional support",
+      "Compatible with major accounting systems",
     ],
     whoIsItFor: [
-      "Homeowners building new homes or extensions",
-      "Developers with residential projects",
-      "Granny flat builders and companies",
-      "Builders seeking fast-track approval",
+      "Small and medium-sized businesses",
+      "Businesses with growing transaction volumes",
+      "Companies needing to catch up on backlog bookkeeping",
+      "Businesses seeking cost-effective financial record management",
     ],
     process: [
-      "Submit plans and documents for assessment",
-      "Plans assessed against SEPP complying development codes",
-      "Any outstanding requirements communicated clearly",
-      "CDC issued once all criteria are met",
-      "Critical stage inspections scheduled",
+      "Discuss your bookkeeping requirements and current systems",
+      "Agree on scope, frequency, and level of support needed",
+      "Assign appropriate professional (Bookkeeper, Supervisor, or Manager)",
+      "Begin maintaining your financial records",
+      "Provide regular updates and address queries as they arise",
     ],
-    icon: "FileCheck",
+    icon: "BookOpen",
     featured: true,
   },
   {
-    id: "cc",
-    slug: "construction-certificate",
-    title: "Construction Certificate (CC)",
-    shortTitle: "Construction Certificate",
-    acronym: "CC",
-    tagline: "The approval you need to start construction after development consent.",
+    id: "financial-reporting",
+    slug: "financial-reporting",
+    title: "Financial Reporting",
+    shortTitle: "Financial Reporting",
+    tagline: "Clear and timely financial reporting that provides management with reliable information about business performance.",
     description:
-      "A Construction Certificate (CC) is required before any building work can commence on a DA-approved project. It confirms that your detailed construction plans comply with the Building Code of Australia (BCA/NCC) and any conditions of the development consent.",
-    longDescription: `Once your Development Application (DA) has been approved by council, you will need a Construction Certificate before building work can begin. The CC confirms that your detailed construction plans and specifications comply with the Building Code of Australia (BCA/NCC) and any conditions set out in the development consent.
+      "Clear and timely financial reporting that provides management with reliable information about business performance and financial position.",
+    longDescription: `Understanding your business's financial position requires more than just accurate records — it requires clear, timely reports that translate numbers into actionable information.
 
-Certify Right works with builders, developers and homeowners to efficiently process Construction Certificates. We review your plans, identify any compliance issues early, and work to get your certificate issued so construction can proceed without unnecessary delays.`,
+We prepare financial reports tailored to management's needs, including profit and loss statements, balance sheets, cash flow summaries, and management accounts. Our reports are presented in a clear format that helps business owners and managers understand performance at a glance.
+
+Regular financial reporting enables better decision-making, supports strategic planning, and provides the visibility needed to identify issues early and respond effectively. We work to ensure reports are delivered on time and explained clearly.`,
     features: [
-      "Required before construction commences on DA-approved projects",
-      "Confirms compliance with BCA/NCC",
-      "Reviews detailed construction plans and specifications",
-      "Ensures consistency with development consent conditions",
-      "Issued by a registered certifier",
+      "Profit and loss statements",
+      "Balance sheet preparation",
+      "Cash flow reports and summaries",
+      "Management accounts and commentary",
+      "Customized report formats for management needs",
+      "Timely delivery on agreed reporting schedules",
     ],
     whoIsItFor: [
-      "Homeowners with DA approval",
-      "Builders commencing DA-approved work",
-      "Developers proceeding to construction",
+      "Business owners requiring regular performance reports",
+      "Management teams needing financial visibility",
+      "Businesses reporting to investors or boards",
+      "Companies needing consolidated reporting across entities",
     ],
     process: [
-      "DA approval received from council",
-      "Construction plans prepared by designer/draftsperson",
-      "Plans lodged with Certify Right for CC assessment",
-      "BCA/NCC compliance reviewed",
-      "CC issued — construction can commence",
+      "Understand management reporting requirements and frequency",
+      "Agree on report format, content, and schedule",
+      "Maintain up-to-date financial records throughout the period",
+      "Prepare and review financial reports",
+      "Deliver reports and discuss findings with management",
     ],
-    icon: "HardHat",
+    icon: "BarChart2",
   },
   {
-    id: "oc",
-    slug: "occupation-certificate",
-    title: "Occupation Certificate (OC)",
-    shortTitle: "Occupation Certificate",
-    acronym: "OC",
-    tagline: "Certifying your building is complete and fit for occupation.",
+    id: "management-consultancy",
+    slug: "management-consultancy",
+    title: "Management Consultancy",
+    shortTitle: "Management Consultancy",
+    tagline: "Practical financial and management support to help businesses analyze financial information and make informed decisions.",
     description:
-      "An Occupation Certificate (OC) is required before a new building or change of use can be occupied. It confirms that the completed building is suitable for occupation in accordance with its approved purpose.",
-    longDescription: `An Occupation Certificate is one of the final steps in your building project. It confirms that the building has been completed in accordance with the approved plans and is suitable for occupation.
+      "Practical financial and management support to help businesses analyze financial information, understand performance, and make informed decisions.",
+    longDescription: `Beyond bookkeeping and reporting, businesses sometimes need practical support to interpret financial data and use it to drive better decisions. Our management consultancy service provides that additional layer of expertise.
 
-For new buildings, a Final OC is required before anyone can move in or occupy the premises. Interim OCs can also be issued for staged developments where parts of a building are completed and ready for occupation before the whole project is finished.
+We work alongside management to analyze financial information, identify trends and variances, and provide practical insights that support decision-making. This may include analyzing profitability by product or division, reviewing cost structures, assessing working capital, or providing support during periods of business change.
 
-Certify Right manages the full OC process — from scheduling final inspections to issuing the certificate once all requirements are satisfied.`,
+Our approach is practical and business-focused. We communicate clearly and help management understand what the numbers mean for their business — without unnecessary jargon or complexity.`,
     features: [
-      "Required before occupation of new buildings",
-      "Confirms building is complete and fit for purpose",
-      "Interim OCs available for staged developments",
-      "Requires satisfactory final inspection",
-      "Registered on NSW Planning Portal",
+      "Financial performance analysis and commentary",
+      "Variance analysis and trend identification",
+      "Profitability review by segment or product",
+      "Working capital analysis and cash flow support",
+      "Support during business change or restructuring",
+      "Clear, practical insights without financial jargon",
     ],
     whoIsItFor: [
-      "Homeowners completing new homes",
-      "Developers completing residential or commercial buildings",
-      "Builders completing projects",
+      "Business owners seeking deeper financial insights",
+      "Management teams navigating growth or change",
+      "Companies requiring financial analysis beyond standard reports",
+      "Businesses preparing for investment, acquisition, or restructure",
     ],
     process: [
-      "All required critical stage inspections completed",
-      "Final inspection conducted",
-      "All outstanding documentation received",
-      "OC issued and registered on NSW Planning Portal",
+      "Understand business context and management information needs",
+      "Review financial data and identify key areas for analysis",
+      "Prepare analysis, commentary, and insights",
+      "Present findings and recommendations to management",
+      "Provide ongoing support as required",
     ],
-    icon: "CheckCircle2",
+    icon: "TrendingUp",
   },
   {
-    id: "pca",
-    slug: "principal-certifier",
-    title: "Principal Certifier (PCA)",
-    shortTitle: "Principal Certifier",
-    acronym: "PCA",
-    tagline: "Your independent certifier managing inspections from start to finish.",
+    id: "budgeting-forecasting",
+    slug: "budgeting-forecasting",
+    title: "Budgeting & Forecasting",
+    shortTitle: "Budgeting & Forecasting",
+    tagline: "Support with financial planning, budgeting, forecasting, and monitoring actual performance against expectations.",
     description:
-      "As your Principal Certifier (formerly PCA), Certify Right takes responsibility for conducting critical stage inspections throughout your project and issuing the Occupation Certificate at completion.",
-    longDescription: `Under NSW building legislation, a Principal Certifier must be appointed before construction commences. The Principal Certifier is responsible for conducting or overseeing critical stage inspections during construction and issuing the Occupation Certificate upon satisfactory completion.
+      "Support with financial planning, budgeting, forecasting, and monitoring actual performance against expectations.",
+    longDescription: `Effective financial planning requires reliable budgets and forecasts that reflect business reality. We support businesses in preparing and maintaining budgets and forecasts that are useful tools for managing performance.
 
-Certify Right provides Principal Certifier services for residential and commercial projects across NSW. As your Principal Certifier, Fadi Habbouche brings real building expertise — not just paperwork processing — to every inspection. He understands construction from a civil engineering perspective and can identify issues early before they become costly problems.
+Our budgeting and forecasting service helps businesses set realistic financial targets, project future performance based on known assumptions, and track actual results against those expectations. Regular comparison of actual versus budgeted performance provides early visibility into issues and helps management take corrective action.
 
-Appointing Certify Right as your Principal Certifier means you have a responsive, experienced professional who keeps your project moving.`,
+Whether you are preparing an annual budget, a rolling forecast, or a project-specific financial plan, we provide practical support to ensure the numbers are credible and the process is manageable.`,
     features: [
-      "Required appointment before construction commences",
-      "Conducts all mandatory critical stage inspections",
-      "Issues the final Occupation Certificate",
-      "Registered and authorised under NSW legislation",
-      "Responsive communication throughout your project",
-      "Real engineering expertise — not just paperwork",
+      "Annual budget preparation and review",
+      "Rolling forecasts updated regularly",
+      "Actual versus budget variance analysis",
+      "Cash flow forecasting and liquidity planning",
+      "Scenario modelling and sensitivity analysis",
+      "Reporting on budget performance to management",
     ],
     whoIsItFor: [
-      "Builders commencing construction",
-      "Developers managing large projects",
-      "Homeowners building or extending",
+      "Businesses implementing formal financial planning processes",
+      "Management requiring budget vs actual reporting",
+      "Companies preparing forecasts for lenders or investors",
+      "Businesses managing significant projects or capital expenditure",
     ],
     process: [
-      "Principal Certifier appointment form signed",
-      "Appointment registered on NSW Planning Portal",
-      "Construction commencement notice received",
-      "Critical stage inspections conducted at each stage",
-      "Final inspection and Occupation Certificate issued",
+      "Understand business objectives and planning requirements",
+      "Gather historical data and key business assumptions",
+      "Prepare budget or forecast model",
+      "Review with management and refine as required",
+      "Monitor actuals vs budget and report on variances",
     ],
-    icon: "ClipboardCheck",
+    icon: "Target",
   },
   {
-    id: "bca-compliance",
-    slug: "bca-ncc-compliance-reports",
-    title: "BCA / NCC Compliance Reports",
-    shortTitle: "BCA / NCC Compliance",
-    acronym: "BCA",
-    tagline: "Expert compliance advice based on the Building Code of Australia.",
+    id: "cost-control",
+    slug: "cost-control",
+    title: "Cost Control",
+    shortTitle: "Cost Control",
+    tagline: "Analysis and monitoring of business costs to improve visibility over expenditure and support effective cost management.",
     description:
-      "BCA/NCC Compliance Reports assess your proposed development against the requirements of the National Construction Code (NCC), formerly known as the Building Code of Australia (BCA).",
-    longDescription: `The National Construction Code (NCC) — previously known as the Building Code of Australia (BCA) — sets minimum standards for the design and construction of buildings across Australia. Compliance with the NCC is a mandatory requirement for all building work.
+      "Analysis and monitoring of business costs to improve visibility over expenditure and support effective cost management.",
+    longDescription: `Managing costs effectively is critical to business profitability and sustainability. Our cost control service provides businesses with the analysis and visibility needed to understand where money is being spent and how costs can be managed more effectively.
 
-Certify Right prepares BCA/NCC Compliance Reports for residential and commercial projects. These reports are typically required as part of a DA, CDC or CC application to demonstrate that a proposed development complies with the relevant NCC provisions.
+We review cost structures, identify areas of significant or growing expenditure, and provide analysis that helps management understand cost behavior and its impact on profitability. We also support businesses in establishing cost monitoring processes and reviewing expenditure against approved budgets.
 
-With Fadi's background in civil engineering and fire safety, Certify Right can assess complex compliance matters and provide clear, practical reports that satisfy the requirements of both private certifiers and councils.`,
+Cost control is most valuable when it is an ongoing process rather than a one-off exercise. We help businesses build the habits and processes needed to keep costs under regular review.`,
     features: [
-      "Required for DA, CDC and CC applications",
-      "Assessment against current NCC provisions",
-      "Covers structural, fire safety, access and energy efficiency",
-      "Clear, concise reporting",
-      "Practical advice on achieving compliance",
+      "Cost structure analysis and review",
+      "Expenditure monitoring against budget",
+      "Identification of cost reduction opportunities",
+      "Cost allocation and departmental reporting",
+      "Supplier and contract cost reviews",
+      "Reporting on cost trends and variances",
     ],
     whoIsItFor: [
-      "Architects and designers",
-      "Builders with complex compliance queries",
-      "Developers at the design stage",
-      "Homeowners planning significant works",
+      "Businesses with high or growing operating costs",
+      "Companies seeking to improve profitability through cost management",
+      "Management requiring visibility over departmental expenditure",
+      "Businesses implementing cost reduction programs",
     ],
     process: [
-      "Plans and specifications reviewed",
-      "Assessment against applicable NCC provisions",
-      "Areas of non-compliance identified",
-      "Solutions and alternatives recommended",
-      "Compliance report prepared and issued",
+      "Review existing cost structures and expenditure patterns",
+      "Identify key cost categories and drivers",
+      "Analyze trends and variances against expectations",
+      "Provide recommendations for cost improvement",
+      "Establish ongoing monitoring and reporting processes",
     ],
-    icon: "BookOpen",
+    icon: "PiggyBank",
   },
   {
-    id: "da-support",
-    slug: "development-application-support",
-    title: "Development Application Support",
-    shortTitle: "DA Support",
-    tagline: "Pre-application advice and DA documentation support.",
+    id: "actuarial-valuation",
+    slug: "actuarial-valuation",
+    title: "Actuarial Valuation",
+    shortTitle: "Actuarial Valuation",
+    tagline: "Professional actuarial valuation support for applicable financial, accounting, and business requirements.",
     description:
-      "Development Application (DA) support services to help navigate the council approval process — from pre-DA advice to preparing supporting documentation.",
-    longDescription: `Not all development qualifies for a CDC — some projects require a Development Application (DA) through your local council. Certify Right provides pre-application advice and supports clients through the DA preparation process.
+      "Professional actuarial valuation support for applicable financial, accounting, and business requirements.",
+    longDescription: `Actuarial valuations are required in specific financial, accounting, and business contexts — such as valuing employee benefit obligations, assessing insurance liabilities, or supporting financial reporting requirements under applicable accounting standards.
 
-Understanding what council requires before you lodge can save significant time and money. Certify Right can review your project concept, advise on what documentation will be required, and help identify any potential issues early in the process.
+Our actuarial valuation support service provides businesses with professional assistance in obtaining and understanding actuarial valuations applicable to their circumstances. We work with qualified actuaries to ensure valuations are conducted appropriately and that the results are properly reflected in financial records and reports.
 
-While the DA itself is lodged with and assessed by your local council, having an experienced building surveyor involved early helps ensure your application is properly prepared.`,
+We provide support through the full process — from identifying when an actuarial valuation is required, to coordinating with actuaries, reviewing outputs, and ensuring results are appropriately recorded and disclosed in financial statements.`,
     features: [
-      "Pre-DA consultation and advice",
-      "Review of project against council requirements",
-      "Support with BCA/NCC documentation",
-      "Identification of potential issues early",
-      "Guidance on the DA pathway",
+      "Employee benefit obligation valuations",
+      "Insurance and financial liability assessments",
+      "Support with financial reporting requirements",
+      "Coordination with qualified actuaries",
+      "Review and interpretation of valuation outputs",
+      "Assistance with financial statement disclosure",
     ],
     whoIsItFor: [
-      "Property owners planning significant development",
-      "Builders working on non-complying development",
-      "Developers planning multi-dwelling or commercial projects",
+      "Companies with defined benefit pension obligations",
+      "Businesses with significant employee entitlement liabilities",
+      "Organizations subject to actuarial reporting requirements",
+      "Businesses preparing for audit or financial statement review",
     ],
     process: [
-      "Project concept reviewed",
-      "Council requirements identified",
-      "Pre-DA advice provided",
-      "Supporting documentation prepared",
-      "Ongoing support through assessment",
+      "Identify applicable actuarial valuation requirements",
+      "Gather relevant data and information",
+      "Coordinate with qualified actuaries",
+      "Review valuation results and outputs",
+      "Record and disclose results appropriately in financial statements",
     ],
-    icon: "FileText",
-  },
-  {
-    id: "demolition",
-    slug: "demolition-approvals",
-    title: "Demolition Approvals",
-    shortTitle: "Demolition Approvals",
-    tagline: "Demolition approvals for structures requiring certification under NSW legislation.",
-    description:
-      "Demolition of structures in NSW may require either a CDC or Development Consent depending on the site, zone and scope of works. Certify Right can advise on the appropriate pathway and issue demolition approvals where eligible.",
-    longDescription: `Before demolishing a building or structure in NSW, an approval is generally required. For eligible structures, demolition can be approved as complying development under a CDC. For structures that do not meet the criteria, a Development Application to council may be required.
-
-Certify Right assesses the demolition scope, advises on the appropriate approval pathway, and issues CDCs for eligible demolition works. We also coordinate with structural engineers and other consultants where required.`,
-    features: [
-      "CDC pathway for eligible demolition works",
-      "Advice on approval requirements",
-      "Coordination with structural engineers",
-      "Heritage and environmental considerations identified",
-      "Asbestos and hazardous materials guidance",
-    ],
-    whoIsItFor: [
-      "Homeowners demolishing existing structures",
-      "Developers clearing sites for new development",
-      "Builders undertaking partial demolitions",
-    ],
-    process: [
-      "Demolition scope assessed",
-      "Approval pathway determined (CDC or DA)",
-      "Required documentation identified",
-      "Approval issued for eligible works",
-      "Pre-demolition inspection conducted",
-    ],
-    icon: "Building2",
-  },
-  {
-    id: "swimming-pool",
-    slug: "swimming-pool-compliance",
-    title: "Swimming Pool Compliance",
-    shortTitle: "Swimming Pool Compliance",
-    tagline: "Swimming pool barrier compliance inspections and certificates.",
-    description:
-      "Swimming pool barrier compliance inspections and certification under the Swimming Pools Act 1992 (NSW). Certify Right conducts pool barrier inspections and issues compliance certificates for residential swimming pools and spas.",
-    longDescription: `Under the Swimming Pools Act 1992 (NSW), all residential swimming pools and spas must have a complying pool barrier (fence/gate) to prevent unsupervised access by young children. Pool owners are required to register their pool and obtain a valid compliance certificate.
-
-Certify Right conducts swimming pool barrier inspections across NSW and issues compliance certificates where barriers meet the requirements. We provide clear, practical advice on what is required to achieve compliance.
-
-Pool compliance certificates are required when selling or leasing a property with a pool, and are also required as part of the ongoing registration obligations under NSW law.`,
-    features: [
-      "Pool barrier inspections under the Swimming Pools Act 1992",
-      "Compliance certificates for complying barriers",
-      "Required for property sale and lease",
-      "Clear advice on barrier requirements",
-      "Re-inspection services available",
-    ],
-    whoIsItFor: [
-      "Homeowners selling or leasing a property with a pool",
-      "Property investors with pool properties",
-      "Homeowners wanting to confirm compliance",
-    ],
-    process: [
-      "Pool barrier inspection booked",
-      "On-site inspection conducted",
-      "Compliance determined against the Swimming Pools Act",
-      "Compliance certificate issued (if complying)",
-      "Non-compliance report provided with rectification advice",
-    ],
-    icon: "Waves",
-  },
-  {
-    id: "inspections",
-    slug: "building-inspections",
-    title: "Building Inspections",
-    shortTitle: "Building Inspections",
-    tagline: "Critical stage and progress inspections to keep your project on track.",
-    description:
-      "Critical stage inspections are mandatory under NSW building legislation and must be conducted at key stages of construction. Certify Right provides prompt, reliable inspection services across NSW.",
-    longDescription: `Building inspections are a mandatory part of the construction process in NSW. Critical stage inspections must be conducted at specific stages of construction — such as footings, slab, framing and final — before work can proceed to the next stage.
-
-Certify Right provides responsive critical stage inspection services. We understand that delays at inspection stage can cost builders and clients significant money, so we prioritise prompt inspection booking and turnaround.
-
-As your Principal Certifier, Certify Right conducts all required critical stage inspections. We also provide progress and pre-purchase inspections where required.`,
-    features: [
-      "All critical stage inspections conducted",
-      "Prompt booking and attendance",
-      "Footings, slab, frame, waterproofing and final inspections",
-      "Clear inspection reports",
-      "Defect identification and guidance",
-    ],
-    whoIsItFor: [
-      "Builders at critical construction stages",
-      "Owner-builders managing their own construction",
-      "Property buyers seeking pre-purchase reports",
-    ],
-    process: [
-      "Inspection booking received",
-      "Inspection conducted at agreed time",
-      "Inspection report prepared",
-      "Results communicated clearly",
-      "Re-inspection booked where required",
-    ],
-    icon: "Search",
-  },
-  {
-    id: "fire-safety",
-    slug: "fire-safety",
-    title: "Fire Safety",
-    shortTitle: "Fire Safety",
-    tagline: "Fire safety compliance advice for residential and commercial buildings.",
-    description:
-      "Fire safety compliance advice and documentation for buildings where fire safety measures are required under the NCC/BCA or as conditions of consent.",
-    longDescription: `Fire safety is a critical element of building compliance, particularly for commercial, mixed-use and multi-dwelling residential buildings. The NCC/BCA prescribes minimum fire safety requirements for different building classes and uses.
-
-Certify Right provides fire safety advice and documentation services, including Annual Fire Safety Statements (AFSS), fire safety compliance reviews, and advice on fire safety upgrades required under the NCC or as conditions of development consent.
-
-With Fadi's background in fire safety, Certify Right brings practical expertise to fire safety compliance matters.`,
-    features: [
-      "Fire safety compliance reviews",
-      "Annual Fire Safety Statement (AFSS) support",
-      "Advice on fire safety upgrade requirements",
-      "NCC fire safety provisions assessment",
-      "Coordination with fire safety practitioners",
-    ],
-    whoIsItFor: [
-      "Commercial building owners",
-      "Strata managers",
-      "Developers with fire safety conditions",
-      "Building managers seeking compliance advice",
-    ],
-    process: [
-      "Building fire safety measures reviewed",
-      "Compliance assessed against NCC requirements",
-      "Outstanding fire safety measures identified",
-      "Upgrade pathway recommended",
-      "Documentation prepared as required",
-    ],
-    icon: "Flame",
+    icon: "Calculator",
   },
 ];
 
