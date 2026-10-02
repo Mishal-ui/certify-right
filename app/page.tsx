@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import HeroSlider from "@/components/home/HeroSlider";
 import AboutSection from "@/components/home/AboutSection";
-import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
+import WhoWeHelpSection from "@/components/home/WhoWeHelpSection";
 import ServicesSection from "@/components/home/ServicesSection";
-import SystemsSection from "@/components/home/SystemsSection";
+import AboutFadiSection from "@/components/home/AboutFadiSection";
 import HowItWorksSection from "@/components/home/HowItWorksSection";
-import PricingSection from "@/components/home/PricingSection";
+import ServiceAreasSection from "@/components/home/ServiceAreasSection";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+import FAQPreviewSection from "@/components/home/FAQPreviewSection";
 import CTASection from "@/components/home/CTASection";
 
 export const metadata: Metadata = {
-  title: "Certify Right | Professional Bookkeeping & Accounting",
+  title: "Certify Right | NSW Building Certification",
   description:
-    "Professional bookkeeping, accounting and financial support for your business. 20+ years experience. Flexible hourly and monthly plans. Oracle, SAP, QuickBooks, Xero and more.",
+    "NSW Building Certification — Fast, Clear, Responsive and Done Right. CDC, Construction Certificates, Occupation Certificates, BCA compliance and building inspections across Greater Sydney and NSW. Fadi Habbouche — Registered Building Surveyor Class A3, BDC2868.",
   alternates: {
     canonical: "https://certifyright.com.au",
   },
@@ -22,12 +24,14 @@ export default function HomePage() {
     <>
       <HeroSlider />
       <AboutSection />
-      <WhyChooseUsSection />
+      <WhoWeHelpSection />
       <ServicesSection />
-      <SystemsSection />
+      <AboutFadiSection />
       <HowItWorksSection />
-      <PricingSection />
+      <ServiceAreasSection />
+      <TestimonialsSection />
       <CTASection />
+      <FAQPreviewSection />
     </>
   );
 }

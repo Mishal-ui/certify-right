@@ -5,55 +5,59 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://certifyright.com.au"),
   title: {
-    default: "Certify Right | Professional Bookkeeping & Accounting",
+    default: "Certify Right | NSW Building Certification",
     template: "%s | Certify Right",
   },
   description:
-    "Professional bookkeeping, accounting and financial support for your business. 20+ years experience. Flexible hourly and monthly plans. Oracle, SAP, QuickBooks, Xero and more.",
+    "NSW Building Certification — Fast, Clear, Responsive and Done Right. Certify Right is operated by Fadi Habbouche, Registered Building Surveyor Class A3 (BDC2868). CDC, Construction Certificates, Occupation Certificates and more across Greater Sydney and NSW.",
   keywords: [
-    "professional bookkeeping",
-    "accounting services",
-    "financial reporting",
-    "management accounts",
-    "bookkeeper",
-    "accounting support",
-    "QuickBooks bookkeeping",
-    "Xero bookkeeping",
-    "small business accounting",
-    "cost control",
+    "NSW building certification",
+    "Complying Development Certificate",
+    "CDC Sydney",
+    "Construction Certificate",
+    "Occupation Certificate",
+    "Principal Certifier",
+    "registered building surveyor",
+    "BCA compliance",
+    "building inspections Sydney",
+    "fire safety certificate NSW",
+    "Fadi Habbouche",
+    "Certify Right",
+    "building certifier Merrylands",
+    "building certifier Greater Sydney",
   ],
   authors: [{ name: "Certify Right" }],
-  creator: "Certify Right",
+  metadataBase: new URL("https://certifyright.com.au"),
   openGraph: {
     type: "website",
     locale: "en_AU",
     url: "https://certifyright.com.au",
     siteName: "Certify Right",
-    title: "Certify Right | Professional Bookkeeping & Accounting",
+    title: "Certify Right | NSW Building Certification",
     description:
-      "Professional bookkeeping, accounting and financial support. 20+ years experience. Flexible hourly and monthly plans.",
+      "Fast, Clear, Responsive and Done Right. CDC, Construction Certificates, Occupation Certificates, BCA compliance and more. Fadi Habbouche — Registered Building Surveyor Class A3, BDC2868.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Certify Right Professional Bookkeeping & Accounting",
+        alt: "Certify Right — NSW Building Certification",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Certify Right | Professional Bookkeeping & Accounting",
+    title: "Certify Right | NSW Building Certification",
     description:
-      "Professional bookkeeping, accounting and financial support. 20+ years experience. Flexible plans.",
+      "Fast, Clear, Responsive and Done Right. CDC, Construction Certificates, Occupation Certificates and more across Greater Sydney and NSW.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -61,6 +65,7 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
@@ -73,10 +78,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
-      <body className="min-h-full flex flex-col antialiased">
+    <html lang="en-AU" className={inter.variable}>
+      <body className="font-sans antialiased text-slate-900 bg-white">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
