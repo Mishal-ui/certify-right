@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -36,27 +35,6 @@ const iconMap: Record<string, React.ElementType> = {
   Search,
   Flame,
 };
-
-const inActionImages = [
-  {
-    src: "/images/fadi-inspection-action.jpg",
-    pos: "object-top",
-    service: "Building Inspections",
-    caption: "Critical stage inspections, on site and on time",
-  },
-  {
-    src: "/images/fadi-slab-check.jpg",
-    pos: "object-top",
-    service: "Principal Certifier",
-    caption: "From foundation to final certificate",
-  },
-  {
-    src: "/images/project-roof-truss.jpg",
-    pos: "object-center",
-    service: "Construction Certificate",
-    caption: "Every construction stage covered",
-  },
-];
 
 export default function ServicesPage() {
   const featured = services.find((s) => s.featured);
@@ -97,7 +75,7 @@ export default function ServicesPage() {
       <section className="py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Featured: CDC — with real image */}
+          {/* Featured: CDC */}
           {featured && (
             <div className="mb-10">
               <div className="inline-flex items-center gap-2 bg-blue-50 text-[#185FA5] text-xs font-semibold px-3 py-1.5 rounded-full mb-6 uppercase tracking-wide">
@@ -110,70 +88,27 @@ export default function ServicesPage() {
                       Most Popular
                     </span>
                   </div>
-                  <div className="grid lg:grid-cols-2 gap-8 items-center">
-                    <div>
-                      <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-5">
-                        <FileCheck className="w-7 h-7 text-white" />
-                      </div>
-                      <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3">
-                        {featured.title}
-                      </h2>
-                      <p className="text-blue-100 leading-relaxed mb-6">
-                        {featured.description}
-                      </p>
-                      <span className="inline-flex items-center gap-2 bg-white text-[#0C2D5A] font-bold px-5 py-2.5 rounded-lg text-sm group-hover:bg-blue-50 transition-colors">
-                        Learn More
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
+                  <div className="max-w-2xl">
+                    <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-5">
+                      <FileCheck className="w-7 h-7 text-white" />
                     </div>
-
-                    {/* Real photo on right */}
-                    <div className="hidden lg:block relative h-64 rounded-xl overflow-hidden shadow-lg">
-                      <Image
-                        src="/images/fadi-slab-check.jpg"
-                        alt="Fadi Habbouche conducting complying development slab inspection"
-                        fill
-                        className="object-cover object-top"
-                        sizes="(min-width: 1024px) 50vw, 0vw"
-                      />
-                      <div className="absolute inset-0 bg-[#0C2D5A]/25" />
-                    </div>
+                    <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+                      {featured.title}
+                    </h2>
+                    <p className="text-blue-100 leading-relaxed mb-6">
+                      {featured.description}
+                    </p>
+                    <span className="inline-flex items-center gap-2 bg-white text-[#0C2D5A] font-bold px-5 py-2.5 rounded-lg text-sm group-hover:bg-blue-50 transition-colors">
+                      Learn More
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
                   </div>
                 </div>
               </Link>
             </div>
           )}
 
-          {/* Fadi in Action — editorial image strip */}
-          <div className="mb-12">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="h-px w-8 bg-[#185FA5]" />
-              <span className="text-[#185FA5] text-xs font-semibold uppercase tracking-widest">Fadi in Action</span>
-            </div>
-            <div className="grid sm:grid-cols-3 gap-4">
-              {inActionImages.map(({ src, pos, service, caption }) => (
-                <div key={service} className="relative h-56 rounded-2xl overflow-hidden group">
-                  <Image
-                    src={src}
-                    alt={`${service} — Certify Right`}
-                    fill
-                    className={`object-cover ${pos} group-hover:scale-105 transition-transform duration-700`}
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                  />
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: "linear-gradient(to top, rgba(12,45,90,0.85) 0%, rgba(12,45,90,0.3) 55%, transparent 100%)" }}
-                  />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-blue-200 text-xs font-semibold uppercase tracking-wider mb-1">{service}</p>
-                    <p className="text-white font-bold text-sm leading-snug">{caption}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Other services grid */}
+          {/* All services grid */}
           <h2 className="text-xl font-bold text-[#0C2D5A] mb-6">All Certification Services</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {rest.map((service) => {

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -61,27 +60,6 @@ const memberships = [
   },
 ];
 
-const fieldImages = [
-  {
-    src: "/images/fadi-site-sign.jpg",
-    pos: "object-top",
-    label: "On the Job",
-    desc: "Every site, every stage",
-  },
-  {
-    src: "/images/fadi-frame-team.jpg",
-    pos: "object-top",
-    label: "Active Inspections",
-    desc: "Thorough assessments on site",
-  },
-  {
-    src: "/images/fadi-roadside.jpg",
-    pos: "object-top",
-    label: "NSW-Wide Coverage",
-    desc: "From Sydney to regional NSW",
-  },
-];
-
 export default function AboutPage() {
   return (
     <>
@@ -119,10 +97,10 @@ export default function AboutPage() {
       <section className="py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Editorial bio + image collage */}
-          <div className="grid lg:grid-cols-[1fr_430px] gap-12 lg:gap-16 items-start mb-20">
+          {/* Bio + credentials sidebar */}
+          <div className="grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-16 items-start mb-20">
 
-            {/* Text + credentials */}
+            {/* Text */}
             <div>
               <div className="inline-flex items-center gap-2 bg-blue-50 text-[#185FA5] text-sm font-semibold px-4 py-1.5 rounded-full mb-5">
                 Director, Certify Right
@@ -130,7 +108,7 @@ export default function AboutPage() {
               <h2 className="text-3xl lg:text-4xl font-bold text-[#0C2D5A] mb-6 leading-tight">
                 More Than a Certifier. A Real Building Expert.
               </h2>
-              <div className="space-y-4 text-slate-600 leading-relaxed mb-8">
+              <div className="space-y-4 text-slate-600 leading-relaxed">
                 <p>
                   Fadi Habbouche founded Certify Right to provide NSW homeowners, builders,
                   developers, and granny flat companies with a better certification experience —
@@ -154,9 +132,11 @@ export default function AboutPage() {
                   person with 15+ years of experience engaged with your project from the outset.
                 </p>
               </div>
+            </div>
 
-              {/* Credentials card */}
-              <div className="bg-[#0C2D5A] rounded-2xl p-7 text-white mb-5">
+            {/* Credentials sidebar */}
+            <div className="space-y-4">
+              <div className="bg-[#0C2D5A] rounded-2xl p-7 text-white">
                 <div className="flex items-center gap-3 mb-5">
                   <Award className="w-6 h-6 text-blue-300" />
                   <h3 className="text-white font-bold text-lg">Registration & Credentials</h3>
@@ -178,7 +158,6 @@ export default function AboutPage() {
                 </ul>
               </div>
 
-              {/* Company details */}
               <div className="bg-[#F8FAFC] rounded-2xl p-6 border border-slate-100">
                 <h3 className="text-[#0C2D5A] font-bold text-base mb-3">Company Details</h3>
                 <div className="space-y-2 text-sm">
@@ -206,83 +185,6 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Image column — editorial collage */}
-            <div className="space-y-4">
-              {/* Primary large image */}
-              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/fadi-primary.jpg"
-                  alt="Fadi Habbouche — NSW Registered Building Surveyor and Director of Certify Right"
-                  fill
-                  className="object-cover object-top"
-                  sizes="(min-width: 1024px) 430px, 100vw"
-                  priority
-                />
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{ background: "linear-gradient(to top, #0C2D5A 0%, rgba(12,45,90,0.3) 50%, transparent 100%)" }}
-                />
-                <div className="absolute bottom-5 left-5 right-5 bg-[#0A2448]/85 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3">
-                  <p className="text-white font-bold text-sm">Fadi Habbouche</p>
-                  <p className="text-blue-200 text-xs mt-0.5">NSW Registered Building Surveyor · Class A3 · BDC2868</p>
-                  <p className="text-white/60 text-xs mt-0.5">Civil Engineer · 15+ Years Experience</p>
-                </div>
-              </div>
-
-              {/* Two smaller images side by side */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative h-48 rounded-xl overflow-hidden shadow-md">
-                  <Image
-                    src="/images/fadi-inspection-action.jpg"
-                    alt="Fadi Habbouche conducting on-site building inspection with iPad"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(min-width: 1024px) 205px, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-[#0C2D5A]/15" />
-                </div>
-                <div className="relative h-48 rounded-xl overflow-hidden shadow-md">
-                  <Image
-                    src="/images/fadi-duct-inspect.jpg"
-                    alt="Fadi Habbouche inspecting building systems for BCA compliance"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(min-width: 1024px) 205px, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-[#0C2D5A]/15" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* In the Field — photo strip */}
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-px w-8 bg-[#185FA5]" />
-              <span className="text-[#185FA5] text-xs font-semibold uppercase tracking-widest">Fadi in the Field</span>
-            </div>
-            <div className="grid sm:grid-cols-3 gap-4">
-              {fieldImages.map(({ src, pos, label, desc }) => (
-                <div key={label} className="relative h-64 rounded-2xl overflow-hidden group">
-                  <Image
-                    src={src}
-                    alt={`${label} — Certify Right`}
-                    fill
-                    className={`object-cover ${pos} group-hover:scale-105 transition-transform duration-700`}
-                    sizes="(min-width: 640px) 33vw, 100vw"
-                  />
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: "linear-gradient(to top, rgba(12,45,90,0.85) 0%, rgba(12,45,90,0.3) 55%, transparent 100%)" }}
-                  />
-                  <div className="absolute bottom-5 left-5">
-                    <p className="text-blue-200 text-xs font-semibold uppercase tracking-wider mb-1">{label}</p>
-                    <p className="text-white font-bold text-base leading-snug">{desc}</p>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -321,47 +223,35 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Why Certify Right — image left, text right */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Image */}
-            <div className="relative h-80 lg:h-[420px] rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1">
-              <Image
-                src="/images/fadi-frame-inspect.jpg"
-                alt="Fadi Habbouche conducting building inspection on construction site"
-                fill
-                className="object-cover object-top"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-              />
-              <div className="absolute inset-0 bg-[#0C2D5A]/10" />
-            </div>
-
-            {/* Text + stats */}
-            <div className="order-1 lg:order-2">
-              <h2 className="text-2xl lg:text-3xl font-bold text-[#0C2D5A] mb-4">
-                Why Certify Right?
-              </h2>
-              <div className="space-y-4 text-slate-600 leading-relaxed">
-                <p>
-                  There are many private certifiers in NSW. What distinguishes Certify Right is
-                  the combination of Fadi&apos;s qualifications across multiple disciplines, his
-                  direct involvement in every project, and his commitment to responsive,
-                  plain-English communication.
-                </p>
-                <p>
-                  Certification delays are almost always caused by one of three things: waiting
-                  for information, unclear communication, or slow responses. We address all three.
-                  You know where your project stands at every stage.
-                </p>
+          {/* Why Certify Right */}
+          <div>
+            <h2 className="text-2xl lg:text-3xl font-bold text-[#0C2D5A] mb-8">
+              Why Certify Right?
+            </h2>
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div>
+                <div className="space-y-4 text-slate-600 leading-relaxed">
+                  <p>
+                    There are many private certifiers in NSW. What distinguishes Certify Right is
+                    the combination of Fadi&apos;s qualifications across multiple disciplines, his
+                    direct involvement in every project, and his commitment to responsive,
+                    plain-English communication.
+                  </p>
+                  <p>
+                    Certification delays are almost always caused by one of three things: waiting
+                    for information, unclear communication, or slow responses. We address all three.
+                    You know where your project stands at every stage.
+                  </p>
+                </div>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-[#0C2D5A] text-white font-semibold px-6 py-3 rounded-lg transition-colors mt-8"
+                >
+                  Speak with Fadi
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-[#0C2D5A] text-white font-semibold px-6 py-3 rounded-lg transition-colors mt-8"
-              >
-                Speak with Fadi
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <div className="grid grid-cols-2 gap-3 mt-8">
+              <div className="grid grid-cols-2 gap-3">
                 {[
                   { stat: "15+", label: "Years Experience" },
                   { stat: "A3", label: "Registration Class" },
