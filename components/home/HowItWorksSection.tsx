@@ -1,100 +1,77 @@
-import { ArrowRight, MessageSquare, Search, ClipboardCheck, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const steps = [
   {
-    number: "01",
-    title: "Tell Us About Your Project",
+    step: "01",
+    title: "Tell Us About Your Business",
     description:
-      "Contact us by phone, email or through our enquiry form. Tell us about your project — what type of work, the location and where you're up to.",
-    icon: MessageSquare,
+      "Share your bookkeeping and accounting requirements with us. We will discuss your business, its current processes, and what level of support you are looking for.",
   },
   {
-    number: "02",
-    title: "We Review Your Requirements",
+    step: "02",
+    title: "Choose Your Support Model",
     description:
-      "We assess your project and provide a clear, obligation-free quote within 24 hours. We'll let you know exactly what's required and what to expect.",
-    icon: Search,
+      "Select flexible hourly support for as-needed assistance, or a dedicated monthly accounting professional for ongoing, structured support.",
   },
   {
-    number: "03",
-    title: "Certification & Inspections",
+    step: "03",
+    title: "Choose Your Expertise Level",
     description:
-      "Once engaged, we issue your certificate and conduct all required critical stage inspections throughout your project — promptly and reliably.",
-    icon: ClipboardCheck,
+      "Select a Bookkeeper, Accounting Supervisor, or Accounting Manager based on the complexity and requirements of your business.",
   },
   {
-    number: "04",
-    title: "Keep Your Project Moving",
+    step: "04",
+    title: "Get Started",
     description:
-      "From start to occupation certificate, we stay responsive and available. Clear communication means your project isn't held up by certification.",
-    icon: CheckCircle2,
+      "We agree on the scope of work, assign the appropriate professional, and begin supporting your business — keeping your financial records accurate and up to date.",
   },
 ];
 
 export default function HowItWorksSection() {
   return (
-    <section className="py-20 lg:py-24 bg-[#F8FAFC]">
+    <section id="how-it-works" className="py-16 lg:py-24 bg-[#0C2D5A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-2xl mx-auto text-center mb-14">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="h-px w-8 bg-[#185FA5]" />
-            <span className="text-[#185FA5] text-xs font-semibold tracking-widest uppercase">
-              How It Works
-            </span>
-            <span className="h-px w-8 bg-[#185FA5]" />
+        <div className="text-center mb-12 lg:mb-16">
+          <div className="inline-flex items-center gap-2 bg-white/10 text-blue-200 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            How It Works
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0C2D5A] leading-tight mb-4">
-            A Clearer Path to Certification
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+            Getting Started Is Simple
           </h2>
-          <p className="text-slate-600 text-lg">
-            Simple, transparent process from first enquiry to occupation certificate.
+          <p className="text-blue-100 text-lg max-w-xl mx-auto">
+            Four simple steps to get professional accounting support for your business.
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
-          {/* Connecting line on desktop */}
-          <div
-            className="absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#185FA5]/25 to-transparent hidden lg:block"
-            aria-hidden="true"
-          />
-
-          {steps.map((step, idx) => {
-            const Icon = step.icon;
-            return (
-              <div key={step.number} className="relative flex flex-col">
-                <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-7 flex-1 relative z-10">
-                  {/* Number */}
-                  <div className="text-4xl font-black text-[#185FA5]/15 leading-none mb-4">
-                    {step.number}
-                  </div>
-
-                  {/* Icon */}
-                  <div className="w-12 h-12 bg-[#EEF4FC] rounded-xl flex items-center justify-center mb-5">
-                    <Icon className="w-6 h-6 text-[#185FA5]" />
-                  </div>
-
-                  <h3 className="text-lg font-bold text-[#0C2D5A] leading-tight mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">
-                    {step.description}
-                  </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {steps.map((step, idx) => (
+            <div key={step.step} className="relative">
+              {idx < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-white/10 z-0" style={{ width: "calc(100% - 2rem)", left: "calc(50% + 1.5rem)" }} />
+              )}
+              <div className="relative z-10 bg-white/5 border border-white/10 hover:bg-white/10 transition-colors rounded-2xl p-6">
+                <div className="w-14 h-14 bg-[#185FA5]/40 rounded-xl flex items-center justify-center mb-5">
+                  <span className="text-white font-bold text-xl">{step.step}</span>
                 </div>
-
-                {/* Arrow between cards on desktop */}
-                {idx < steps.length - 1 && (
-                  <div
-                    className="hidden lg:flex absolute top-10 -right-4 z-20 items-center justify-center w-8 h-8 bg-[#EEF4FC] rounded-full border border-blue-100"
-                    aria-hidden="true"
-                  >
-                    <ArrowRight className="w-4 h-4 text-[#185FA5]" />
-                  </div>
-                )}
+                <h3 className="text-white font-semibold text-lg mb-3">{step.title}</h3>
+                <p className="text-blue-100 text-sm leading-relaxed">{step.description}</p>
               </div>
-            );
-          })}
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-white hover:text-[#0C2D5A] text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
+          >
+            Start Today
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </div>
     </section>

@@ -2,38 +2,31 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  FileCheck,
-  HardHat,
-  CheckCircle2,
-  ClipboardCheck,
   BookOpen,
-  FileText,
-  Building2,
-  Waves,
-  Search,
-  Flame,
+  BarChart2,
+  TrendingUp,
+  Target,
+  PiggyBank,
+  Calculator,
+  CheckCircle2,
 } from "lucide-react";
 import { services } from "@/data/services";
 import CTASection from "@/components/home/CTASection";
 
 export const metadata: Metadata = {
-  title: "Building Certification Services NSW",
+  title: "Accounting & Financial Services | Certify Right",
   description:
-    "Certify Right provides CDC, construction certificates, occupation certificates, principal certification, BCA compliance, building inspections and more across NSW.",
+    "Professional bookkeeping, financial reporting, management consultancy, budgeting & forecasting, cost control, and actuarial valuation services tailored to your business.",
   alternates: { canonical: "https://certifyright.com.au/services" },
 };
 
 const iconMap: Record<string, React.ElementType> = {
-  FileCheck,
-  HardHat,
-  CheckCircle2,
-  ClipboardCheck,
   BookOpen,
-  FileText,
-  Building2,
-  Waves,
-  Search,
-  Flame,
+  BarChart2,
+  TrendingUp,
+  Target,
+  PiggyBank,
+  Calculator,
 };
 
 export default function ServicesPage() {
@@ -55,13 +48,14 @@ export default function ServicesPage() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4">
               <span className="h-px w-8 bg-blue-400" />
-              <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">Services</span>
+              <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">Our Services</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Building Certification Services
+              Accounting & Financial Services
             </h1>
             <p className="text-blue-100 text-xl leading-relaxed max-w-2xl">
-              From CDCs and construction certificates to inspections and compliance reports — all under one roof with a single experienced certifier.
+              Practical accounting and financial solutions designed to meet the day-to-day
+              and ongoing requirements of your business.
             </p>
           </div>
         </div>
@@ -70,7 +64,7 @@ export default function ServicesPage() {
       {/* Services grid */}
       <section className="py-20 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Featured CDC */}
+          {/* Featured: Bookkeeping */}
           <div className="mb-10">
             <Link
               href={`/services/${services[0].slug}`}
@@ -80,7 +74,7 @@ export default function ServicesPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="bg-white/15 text-blue-100 text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
-                      Most Popular
+                      Core Service
                     </span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-4">
@@ -109,7 +103,7 @@ export default function ServicesPage() {
           {/* Other services */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.slice(1).map((service) => {
-              const Icon = iconMap[service.icon] || FileCheck;
+              const Icon = iconMap[service.icon] || BookOpen;
               return (
                 <Link
                   key={service.slug}

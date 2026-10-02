@@ -4,32 +4,25 @@ import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle2,
-  FileCheck,
-  HardHat,
-  ClipboardCheck,
   BookOpen,
-  FileText,
-  Building2,
-  Waves,
-  Search,
-  Flame,
+  BarChart2,
+  TrendingUp,
+  Target,
+  PiggyBank,
+  Calculator,
   ArrowLeft,
-  Phone,
+  Mail,
 } from "lucide-react";
 import { services, getServiceBySlug } from "@/data/services";
 import CTASection from "@/components/home/CTASection";
 
 const iconMap: Record<string, React.ElementType> = {
-  FileCheck,
-  HardHat,
-  CheckCircle2,
-  ClipboardCheck,
   BookOpen,
-  FileText,
-  Building2,
-  Waves,
-  Search,
-  Flame,
+  BarChart2,
+  TrendingUp,
+  Target,
+  PiggyBank,
+  Calculator,
 };
 
 type Props = {
@@ -45,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceBySlug(slug);
   if (!service) return {};
   return {
-    title: `${service.title} NSW`,
+    title: `${service.title} | Certify Right`,
     description: service.description,
     alternates: {
       canonical: `https://certifyright.com.au/services/${service.slug}`,
@@ -58,7 +51,7 @@ export default async function ServicePage({ params }: Props) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const Icon = iconMap[service.icon] || FileCheck;
+  const Icon = iconMap[service.icon] || BookOpen;
   const relatedServices = services.filter((s) => s.id !== service.id).slice(0, 3);
 
   return (
@@ -91,7 +84,7 @@ export default async function ServicePage({ params }: Props) {
               {service.featured && (
                 <div className="mb-3">
                   <span className="bg-[#185FA5] text-white text-xs font-semibold px-3 py-1 rounded-full">
-                    Most Popular Service
+                    Core Service
                   </span>
                 </div>
               )}
@@ -110,11 +103,11 @@ export default async function ServicePage({ params }: Props) {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href="tel:0423925514"
+                  href="mailto:info@certifyright.com.au"
                   className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors"
                 >
-                  <Phone className="w-4 h-4" />
-                  0423 925 514
+                  <Mail className="w-4 h-4" />
+                  Email Us
                 </a>
               </div>
             </div>
@@ -126,7 +119,7 @@ export default async function ServicePage({ params }: Props) {
               <ul className="space-y-3">
                 {service.features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-4.5 h-4.5 text-blue-300 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
                     <span className="text-blue-100 text-sm">{f}</span>
                   </li>
                 ))}
@@ -195,7 +188,8 @@ export default async function ServicePage({ params }: Props) {
               <div className="bg-[#0C2D5A] rounded-2xl p-7 text-white sticky top-28">
                 <h3 className="text-lg font-bold mb-4">Ready to Get Started?</h3>
                 <p className="text-blue-100 text-sm leading-relaxed mb-6">
-                  Get an obligation-free quote within 24 hours. Call Fadi directly or submit an enquiry.
+                  Get in touch to discuss your bookkeeping and accounting requirements.
+                  We will help you find the right level of support for your business.
                 </p>
                 <div className="space-y-3">
                   <Link
@@ -206,15 +200,23 @@ export default async function ServicePage({ params }: Props) {
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <a
-                    href="tel:0423925514"
+                    href="mailto:info@certifyright.com.au"
                     className="flex items-center justify-center gap-2 border border-white/30 hover:border-white/60 text-white text-sm font-semibold px-5 py-3 rounded-lg transition-colors w-full"
                   >
-                    <Phone className="w-4 h-4" />
-                    0423 925 514
+                    <Mail className="w-4 h-4" />
+                    Email Us
                   </a>
                 </div>
-                <div className="mt-6 pt-5 border-t border-white/10 text-xs text-blue-300">
-                  NSW Fair Trading Registered Building Surveyor · Class A3 · BDC2868
+                <div className="mt-6 pt-5 border-t border-white/10 space-y-2">
+                  <div className="text-xs text-blue-300">
+                    Hourly from <span className="text-white font-semibold">$10/hr</span>
+                  </div>
+                  <div className="text-xs text-blue-300">
+                    Monthly from <span className="text-white font-semibold">$1,000/mo</span>
+                  </div>
+                  <div className="text-xs text-blue-300">
+                    20+ years professional experience
+                  </div>
                 </div>
               </div>
             </div>
@@ -230,7 +232,7 @@ export default async function ServicePage({ params }: Props) {
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {relatedServices.map((s) => {
-              const SIcon = iconMap[s.icon] || FileCheck;
+              const SIcon = iconMap[s.icon] || BookOpen;
               return (
                 <Link
                   key={s.slug}

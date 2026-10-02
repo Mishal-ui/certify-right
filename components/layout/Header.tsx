@@ -9,10 +9,12 @@ import {
   X,
   ChevronDown,
   ArrowRight,
+  Mail,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { services } from "@/data/services";
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from "@/components/ui/SocialIcons";
+import CRLogo from "@/components/ui/CRLogo";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -25,7 +27,6 @@ const navLinks = [
       href: `/services/${s.slug}`,
     })),
   },
-  { label: "Service Areas", href: "/service-areas" },
   { label: "FAQs", href: "/faqs" },
   { label: "Contact", href: "/contact" },
 ];
@@ -91,19 +92,21 @@ export default function Header() {
             <div className="flex items-center justify-between h-9 text-xs">
               <div className="flex items-center gap-4">
                 <span className="font-semibold text-blue-100 hidden sm:block">
-                  NSW Building Certification
+                  Professional Bookkeeping & Accounting
                 </span>
                 <span className="text-blue-200 hidden md:block">·</span>
                 <span className="text-blue-100 hidden md:block italic">
-                  Fast, Clear, Responsive and Done Right.
+                  Accurate numbers. Clear insights. Smarter decisions.
                 </span>
               </div>
               <div className="flex items-center gap-4">
-                <div className="hidden lg:flex items-center gap-3 text-blue-200 text-xs">
-                  <span>ABN: 34 681 512 443</span>
-                  <span>·</span>
-                  <span>ACN: 681 512 443</span>
-                </div>
+                <a
+                  href="mailto:info@certifyright.com.au"
+                  className="hidden lg:flex items-center gap-1.5 text-blue-200 hover:text-white transition-colors"
+                >
+                  <Mail className="w-3 h-3" />
+                  info@certifyright.com.au
+                </a>
                 <div className="flex items-center gap-2.5">
                   <a
                     href="https://facebook.com"
@@ -143,23 +146,8 @@ export default function Header() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16 lg:h-20">
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-                <div className="flex items-center">
-                  {/* Logo mark */}
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-[#0C2D5A] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-lg lg:text-xl leading-none">
-                      CR
-                    </span>
-                  </div>
-                  <div className="ml-3">
-                    <div className="text-[#0C2D5A] font-bold text-base lg:text-lg leading-tight tracking-tight">
-                      Certify Right
-                    </div>
-                    <div className="text-slate-500 text-xs leading-tight">
-                      NSW Building Certification
-                    </div>
-                  </div>
-                </div>
+              <Link href="/" className="flex items-center flex-shrink-0">
+                <CRLogo />
               </Link>
 
               {/* Desktop nav */}
@@ -245,21 +233,21 @@ export default function Header() {
                 })}
               </nav>
 
-              {/* Right: phone + CTA */}
+              {/* Right: email + CTA */}
               <div className="hidden lg:flex items-center gap-4">
                 <a
-                  href="tel:0423925514"
+                  href="mailto:info@certifyright.com.au"
                   className="flex items-center gap-2 text-slate-700 hover:text-[#0C2D5A] transition-colors"
                 >
                   <div className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-3.5 h-3.5 text-[#185FA5]" />
+                    <Mail className="w-3.5 h-3.5 text-[#185FA5]" />
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 leading-none mb-0.5">
-                      Speak with Fadi
+                      Email Us
                     </div>
                     <div className="text-sm font-semibold text-[#0C2D5A] leading-none">
-                      0423 925 514
+                      info@certifyright.com.au
                     </div>
                   </div>
                 </a>
@@ -310,19 +298,7 @@ export default function Header() {
               className="fixed right-0 top-0 bottom-0 w-80 max-w-[90vw] bg-white z-50 lg:hidden overflow-y-auto"
             >
               <div className="flex items-center justify-between p-4 border-b border-slate-100">
-                <div className="flex items-center gap-2">
-                  <div className="w-9 h-9 bg-[#0C2D5A] rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">CR</span>
-                  </div>
-                  <div>
-                    <div className="text-[#0C2D5A] font-bold text-sm leading-tight">
-                      Certify Right
-                    </div>
-                    <div className="text-slate-400 text-xs leading-tight">
-                      NSW Building Certification
-                    </div>
-                  </div>
-                </div>
+                <CRLogo />
                 <button
                   onClick={() => setMobileOpen(false)}
                   className="p-1.5 rounded-md text-slate-500 hover:bg-slate-100"
@@ -405,14 +381,14 @@ export default function Header() {
 
               <div className="p-4 border-t border-slate-100 space-y-3">
                 <a
-                  href="tel:0423925514"
+                  href="mailto:info@certifyright.com.au"
                   className="flex items-center gap-3 px-4 py-3 rounded-lg bg-slate-50 text-slate-700"
                 >
-                  <Phone className="w-4 h-4 text-[#185FA5]" />
+                  <Mail className="w-4 h-4 text-[#185FA5]" />
                   <div>
-                    <div className="text-xs text-slate-500">Speak with Fadi</div>
+                    <div className="text-xs text-slate-500">Email Us</div>
                     <div className="text-sm font-semibold text-[#0C2D5A]">
-                      0423 925 514
+                      info@certifyright.com.au
                     </div>
                   </div>
                 </a>

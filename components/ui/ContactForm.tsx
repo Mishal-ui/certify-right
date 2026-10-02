@@ -8,7 +8,7 @@ interface FormData {
   phone: string;
   email: string;
   service: string;
-  propertyAddress: string;
+  businessName: string;
   description: string;
   file: File | null;
 }
@@ -18,23 +18,19 @@ interface FormErrors {
   phone?: string;
   email?: string;
   service?: string;
-  propertyAddress?: string;
+  businessName?: string;
   description?: string;
   file?: string;
 }
 
 const serviceOptions = [
   { value: "", label: "Select a service..." },
-  { value: "cdc", label: "Complying Development Certificate (CDC)" },
-  { value: "cc", label: "Construction Certificate" },
-  { value: "oc", label: "Occupation Certificate" },
-  { value: "pca", label: "Principal Certifier (PCA)" },
-  { value: "inspections", label: "Building Inspections" },
-  { value: "bca", label: "BCA / NCC Compliance" },
-  { value: "fire-safety", label: "Fire Safety" },
-  { value: "swimming-pool", label: "Swimming Pool Compliance" },
-  { value: "demolition", label: "Demolition Approval" },
-  { value: "da-support", label: "Development Application Support" },
+  { value: "bookkeeping", label: "Bookkeeping" },
+  { value: "financial-reporting", label: "Financial Reporting" },
+  { value: "management-consultancy", label: "Management Consultancy" },
+  { value: "budgeting-forecasting", label: "Budgeting & Forecasting" },
+  { value: "cost-control", label: "Cost Control" },
+  { value: "actuarial-valuation", label: "Actuarial Valuation" },
   { value: "other", label: "Other" },
   { value: "not-sure", label: "Not Sure" },
 ];
@@ -55,7 +51,7 @@ export default function ContactForm() {
     phone: "",
     email: "",
     service: "",
-    propertyAddress: "",
+    businessName: "",
     description: "",
     file: null,
   });
@@ -77,7 +73,7 @@ export default function ContactForm() {
       e.email = "Please enter a valid email address.";
     }
     if (!formData.service) e.service = "Please select a service.";
-    if (!formData.propertyAddress.trim()) e.propertyAddress = "Property address or suburb is required.";
+    if (!formData.businessName.trim()) e.businessName = "Business name is required.";
     if (!formData.description.trim()) {
       e.description = "Please provide a brief project description.";
     } else if (formData.description.trim().length < 10) {
@@ -141,12 +137,12 @@ export default function ContactForm() {
           Enquiry Received
         </h2>
         <p className="text-slate-600 leading-relaxed mb-2">
-          Thank you, <strong>{formData.fullName}</strong>. We've received your enquiry and will be in touch within 24 hours.
+          Thank you, <strong>{formData.fullName}</strong>. We&apos;ve received your enquiry and will be in touch promptly.
         </p>
         <p className="text-slate-500 text-sm">
-          If you need to speak with us urgently, call{" "}
-          <a href="tel:0423925514" className="text-[#185FA5] font-semibold hover:underline">
-            0423 925 514
+          If you need to reach us urgently, email us at{" "}
+          <a href="mailto:info@certifyright.com.au" className="text-[#185FA5] font-semibold hover:underline">
+            info@certifyright.com.au
           </a>
           .
         </p>
@@ -160,16 +156,16 @@ export default function ContactForm() {
         Send an Enquiry
       </h2>
       <p className="text-slate-500 text-sm mb-8">
-        We'll respond within 24 hours with a clear, obligation-free quote.
+        Tell us about your business and accounting requirements and we will get back to you promptly.
       </p>
 
       {status === "error" && (
         <div className="flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl p-4 mb-6">
           <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
           <p className="text-red-700 text-sm">
-            Something went wrong. Please try again or call us on{" "}
-            <a href="tel:0423925514" className="font-semibold underline">
-              0423 925 514
+            Something went wrong. Please try again or email us at{" "}
+            <a href="mailto:info@certifyright.com.au" className="font-semibold underline">
+              info@certifyright.com.au
             </a>
             .
           </p>
@@ -268,31 +264,31 @@ export default function ContactForm() {
           )}
         </div>
 
-        {/* Property address */}
+        {/* Business name */}
         <div>
-          <label htmlFor="propertyAddress" className="block text-sm font-semibold text-[#0C2D5A] mb-1.5">
-            Property Address or Suburb <span className="text-red-500">*</span>
+          <label htmlFor="businessName" className="block text-sm font-semibold text-[#0C2D5A] mb-1.5">
+            Business Name <span className="text-red-500">*</span>
           </label>
           <input
-            id="propertyAddress"
-            name="propertyAddress"
+            id="businessName"
+            name="businessName"
             type="text"
-            value={formData.propertyAddress}
+            value={formData.businessName}
             onChange={handleChange}
-            placeholder="123 Example Street, Parramatta NSW 2150 — or just a suburb"
+            placeholder="Your business or organisation name"
             className={`w-full px-4 py-3 rounded-xl border text-sm bg-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] transition-colors ${
-              errors.propertyAddress ? "border-red-300" : "border-slate-200"
+              errors.businessName ? "border-red-300" : "border-slate-200"
             }`}
           />
-          {errors.propertyAddress && (
-            <p className="mt-1.5 text-red-600 text-xs">{errors.propertyAddress}</p>
+          {errors.businessName && (
+            <p className="mt-1.5 text-red-600 text-xs">{errors.businessName}</p>
           )}
         </div>
 
         {/* Description */}
         <div>
           <label htmlFor="description" className="block text-sm font-semibold text-[#0C2D5A] mb-1.5">
-            Brief Project Description <span className="text-red-500">*</span>
+            Tell Us About Your Requirements <span className="text-red-500">*</span>
           </label>
           <textarea
             id="description"
@@ -300,7 +296,7 @@ export default function ContactForm() {
             rows={4}
             value={formData.description}
             onChange={handleChange}
-            placeholder="Briefly describe your project — e.g. new single-storey home, granny flat addition, pool, extension…"
+            placeholder="Briefly describe your bookkeeping and accounting requirements — e.g. monthly bookkeeping, financial reporting, payroll support…"
             className={`w-full px-4 py-3 rounded-xl border text-sm bg-[#F8FAFC] focus:outline-none focus:ring-2 focus:ring-[#185FA5]/30 focus:border-[#185FA5] transition-colors resize-none ${
               errors.description ? "border-red-300" : "border-slate-200"
             }`}
@@ -313,7 +309,7 @@ export default function ContactForm() {
         {/* File upload */}
         <div>
           <label className="block text-sm font-semibold text-[#0C2D5A] mb-1.5">
-            Plans Upload{" "}
+            Attach a Document{" "}
             <span className="text-slate-400 font-normal">(Optional)</span>
           </label>
           <p className="text-slate-400 text-xs mb-2">
