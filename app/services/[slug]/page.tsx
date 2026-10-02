@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -33,49 +32,6 @@ const iconMap: Record<string, React.ElementType> = {
   Flame,
 };
 
-const serviceImages: Record<string, { src: string; alt: string; pos: string }> = {
-  "complying-development-certificate": {
-    src: "/images/fadi-slab-check.jpg",
-    alt: "Fadi Habbouche conducting pre-pour slab inspection on residential site",
-    pos: "object-top",
-  },
-  "construction-certificate": {
-    src: "/images/project-roof-truss.jpg",
-    alt: "Timber roof truss structure at construction certificate stage",
-    pos: "object-center",
-  },
-  "occupation-certificate": {
-    src: "/images/fadi-frame-check.jpg",
-    alt: "Fadi Habbouche conducting final building inspection for occupation certificate",
-    pos: "object-top",
-  },
-  "principal-certifier-appointment": {
-    src: "/images/fadi-roadside.jpg",
-    alt: "Fadi Habbouche, Principal Certifier, inspecting construction site",
-    pos: "object-top",
-  },
-  "bca-ncc-compliance": {
-    src: "/images/fadi-duct-inspect.jpg",
-    alt: "Close-up BCA compliance inspection of building mechanical systems",
-    pos: "object-top",
-  },
-  "da-support": {
-    src: "/images/fadi-frame-team.jpg",
-    alt: "Development application site assessment in progress",
-    pos: "object-top",
-  },
-  "building-inspections": {
-    src: "/images/fadi-inspection-action.jpg",
-    alt: "Fadi Habbouche conducting critical stage building inspection with iPad",
-    pos: "object-top",
-  },
-  "fire-safety": {
-    src: "/images/fadi-frame-inspect.jpg",
-    alt: "Fire safety compliance inspection inside construction frame",
-    pos: "object-top",
-  },
-};
-
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -104,7 +60,6 @@ export default async function ServicePage({ params }: Props) {
 
   const Icon = iconMap[service.icon] || FileText;
   const relatedServices = services.filter((s) => s.id !== service.id).slice(0, 3);
-  const serviceImg = serviceImages[service.slug];
 
   return (
     <>
@@ -164,51 +119,23 @@ export default async function ServicePage({ params }: Props) {
               </div>
             </div>
 
-            {/* Features highlight or service image (desktop) */}
-            {serviceImg ? (
-              <div className="hidden lg:block relative h-72 rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src={serviceImg.src}
-                  alt={serviceImg.alt}
-                  fill
-                  className={`object-cover ${serviceImg.pos}`}
-                  sizes="(min-width: 1024px) 50vw, 0vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-[#0C2D5A]/15" />
+            {/* Key features card */}
+            <div className="bg-white/5 rounded-2xl border border-white/10 p-7">
+              <div className="text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
+                Key Features
               </div>
-            ) : (
-              <div className="bg-white/5 rounded-2xl border border-white/10 p-7">
-                <div className="text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                  Key Features
-                </div>
-                <ul className="space-y-3">
-                  {service.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
-                      <span className="text-blue-100 text-sm">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+              <ul className="space-y-3">
+                {service.features.map((f) => (
+                  <li key={f} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
+                    <span className="text-blue-100 text-sm">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Mobile image banner — below hero on small screens for services with images */}
-      {serviceImg && (
-        <div className="lg:hidden relative h-56 overflow-hidden">
-          <Image
-            src={serviceImg.src}
-            alt={serviceImg.alt}
-            fill
-            className={`object-cover ${serviceImg.pos}`}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-[#0C2D5A]/20" />
-        </div>
-      )}
 
       {/* Content */}
       <section className="py-20 lg:py-24 bg-white">
@@ -226,23 +153,6 @@ export default async function ServicePage({ params }: Props) {
                   </p>
                 ))}
               </div>
-
-              {/* Key Features — shown in content for services that have an image in hero */}
-              {serviceImg && (
-                <div className="mt-10 bg-[#F8FAFC] rounded-2xl p-6 border border-slate-100">
-                  <h3 className="text-[#0C2D5A] font-bold text-lg mb-4">Key Features</h3>
-                  <ul className="space-y-3">
-                    {service.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3">
-                        <div className="w-5 h-5 bg-[#EEF4FC] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <CheckCircle2 className="w-3 h-3 text-[#185FA5]" />
-                        </div>
-                        <span className="text-slate-700 text-sm">{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
 
               {/* Who is it for */}
               <div className="mt-10">
