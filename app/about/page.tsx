@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -63,32 +64,45 @@ const memberships = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-[#0C2D5A] py-20 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#g)" />
-          </svg>
+      {/* Hero — Fadi seated photo as background with text overlay */}
+      <section className="relative bg-[#0C2D5A] min-h-[70vh] overflow-hidden">
+        {/* Background: Fadi seated at desk */}
+        <div className="absolute inset-0" aria-hidden="true">
+          <Image
+            src="/images/about-seated.png"
+            alt=""
+            fill
+            className="object-cover"
+            style={{ objectPosition: "60% center" }}
+            priority
+            sizes="100vw"
+          />
+          {/* Left-to-right gradient: dark behind text, clears on right so Fadi remains visible */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, #0C2D5A 28%, rgba(12,45,90,0.80) 43%, rgba(12,45,90,0.15) 61%, transparent 78%)",
+            }}
+          />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="h-px w-8 bg-blue-400" />
-              <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">About</span>
+        {/* Content — matches homepage hero container/alignment pattern */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="min-h-[70vh] py-20 lg:py-28 flex flex-col justify-center">
+            <div className="max-w-xl lg:max-w-[600px]">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-px w-8 bg-blue-400" />
+                <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">About</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                Fadi Habbouche
+              </h1>
+              <p className="text-blue-100 text-xl leading-relaxed">
+                Civil Engineer. Registered Building Surveyor. Council Compliance Officer.
+                Fire Safety Officer. 15+ years of building expertise — and the person you
+                speak to directly.
+              </p>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Fadi Habbouche
-            </h1>
-            <p className="text-blue-100 text-xl leading-relaxed max-w-2xl">
-              Civil Engineer. Registered Building Surveyor. Council Compliance Officer.
-              Fire Safety Officer. 15+ years of building expertise — and the person you
-              speak to directly.
-            </p>
           </div>
         </div>
       </section>

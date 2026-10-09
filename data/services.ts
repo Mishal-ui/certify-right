@@ -10,6 +10,7 @@ export interface Service {
   whoIsItFor: string[];
   process: string[];
   icon: string;
+  banner: string;
   featured?: boolean;
 }
 
@@ -51,6 +52,7 @@ Fadi Habbouche is a NSW Fair Trading Registered Building Surveyor (Class A3, BDC
       "Construction can commence — with inspections scheduled as required",
     ],
     icon: "FileCheck",
+    banner: "/images/services/cdc.png",
     featured: true,
   },
   {
@@ -88,6 +90,7 @@ We assess your documentation, identify any issues early, and work with you to re
       "Inspections are scheduled at critical stages during construction",
     ],
     icon: "HardHat",
+    banner: "/images/services/construction-certificate.png",
   },
   {
     id: "occupation-certificate",
@@ -124,6 +127,7 @@ At Certify Right, we manage the inspection process from start to finish and work
       "You have legal authority to occupy your building",
     ],
     icon: "CheckCircle2",
+    banner: "/images/services/occupation-certificate.png",
   },
   {
     id: "principal-certifier-appointment",
@@ -160,6 +164,7 @@ We handle the documentation, inspection scheduling, compliance monitoring, and f
       "Final inspection completed and Occupation Certificate issued",
     ],
     icon: "ClipboardCheck",
+    banner: "/images/services/principal-certifier.png",
   },
   {
     id: "bca-ncc-compliance",
@@ -196,6 +201,7 @@ With Fadi's background in civil engineering and building surveying — including
       "Ongoing support through design refinement as needed",
     ],
     icon: "BookOpen",
+    banner: "/images/services/bca-ncc.png",
   },
   {
     id: "da-support",
@@ -232,6 +238,7 @@ With experience across council compliance, building surveying, and building desi
       "You refine your application and lodge with greater confidence",
     ],
     icon: "FileText",
+    banner: "/images/services/da-support.png",
   },
   {
     id: "demolition-certificate",
@@ -268,6 +275,7 @@ We also coordinate with the relevant authorities and ensure any asbestos managem
       "Demolition can proceed; subsequent construction certification arranged",
     ],
     icon: "Building2",
+    banner: "/images/services/demolition.png",
   },
   {
     id: "swimming-pool-compliance",
@@ -304,6 +312,7 @@ The process is straightforward: we inspect the pool barrier, assess compliance w
       "Re-inspection arranged once rectifications are complete",
     ],
     icon: "Waves",
+    banner: "/images/services/swimming-pool.png",
   },
   {
     id: "building-inspections",
@@ -340,6 +349,7 @@ Fadi's background as a civil engineer means he understands construction from the
       "Follow-up inspections arranged as needed",
     ],
     icon: "Search",
+    banner: "/images/services/building-inspections.png",
   },
   {
     id: "fire-safety",
@@ -376,6 +386,7 @@ Whether you need an Annual Fire Safety Statement, a fire safety upgrade assessme
       "Ongoing advice available as required",
     ],
     icon: "Flame",
+    banner: "/images/services/fire-safety.png",
   },
 ];
 

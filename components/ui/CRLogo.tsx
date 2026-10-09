@@ -30,8 +30,8 @@ export default function CRLogo({
     <Image
       src={isWhite ? "/images/cr-logo-white.png" : "/images/cr-logo-full.png"}
       alt="Certify Right — Building Certification"
-      width={4310}
-      height={2331}
+      width={1998}
+      height={444}
       className={`h-12 w-auto object-contain ${className}`}
       priority
     />
