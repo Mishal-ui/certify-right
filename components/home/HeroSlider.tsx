@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
@@ -21,6 +22,8 @@ interface SlideData {
   body: string;
   cta1: { label: string; href: string };
   cta2: { label: string; href: string; phone?: boolean };
+  bg: string;
+  objectPos: string;
 }
 
 const SLIDES: SlideData[] = [
@@ -32,6 +35,8 @@ const SLIDES: SlideData[] = [
     body: "Fadi Habbouche is a NSW Registered Building Surveyor (Class A3 · BDC2868) and Civil Engineer with 15+ years experience — handling your certification from start to finish.",
     cta1: { label: "Get a Quote Within 24 Hours", href: "/contact" },
     cta2: { label: "0423 925 514", href: "tel:0423925514", phone: true },
+    bg: "/images/hero-1.png",
+    objectPos: "65% center",
   },
   {
     id: 1,
@@ -41,6 +46,8 @@ const SLIDES: SlideData[] = [
     body: "A CDC is the fastest path to building approval for eligible residential projects — no DA, no council queue. We assess your project against SEPP codes and give you a straight answer upfront.",
     cta1: { label: "Learn About CDC", href: "/services/complying-development-certificate" },
     cta2: { label: "Call Fadi", href: "tel:0423925514", phone: true },
+    bg: "/images/hero-2.png",
+    objectPos: "60% center",
   },
   {
     id: 2,
@@ -50,6 +57,8 @@ const SLIDES: SlideData[] = [
     body: "From Greater Sydney to regional NSW — Certify Right manages every stage of your building certification with clear communication, thorough inspections, and no surprises.",
     cta1: { label: "Our Services", href: "/services" },
     cta2: { label: "Service Areas", href: "/service-areas" },
+    bg: "/images/hero-3.png",
+    objectPos: "65% top",
   },
 ];
 
@@ -57,20 +66,6 @@ const TRUST_BADGES = [
   { Icon: ShieldCheck, label: "NSW Fair Trading Registered" },
   { Icon: CheckCircle2, label: "Class A3 · BDC2868" },
   { Icon: Clock, label: "24-Hr Quote Turnaround" },
-];
-
-const STATS = [
-  { value: "15+", label: "Years Experience" },
-  { value: "A3", label: "Registration Class" },
-  { value: "10", label: "Services Offered" },
-  { value: "NSW", label: "Wide Coverage" },
-];
-
-const CREDENTIALS = [
-  "NSW Fair Trading Registered",
-  "AIBS Member",
-  "AAC Member",
-  "Professional Indemnity Insurance",
 ];
 
 const AUTO_MS = 6000;
@@ -123,24 +118,43 @@ export default function HeroSlider() {
       onTouchEnd={() => setPaused(false)}
       aria-label="Hero"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.04] pointer-events-none" aria-hidden="true">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="hg" width="48" height="48" patternUnits="userSpaceOnUse">
-              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="white" strokeWidth="1" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hg)" />
-        </svg>
-      </div>
+      {/* Background image — crossfades per slide */}
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={`bg-${current}`}
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          aria-hidden="true"
+        >
+          <Image
+            src={slide.bg}
+            alt=""
+            fill
+            className="object-cover"
+            style={{ objectPosition: slide.objectPos }}
+            priority={current === 0}
+            sizes="100vw"
+          />
+          {/* Left-to-right gradient: solid on left for text, clears on right so face is visible */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, #0C2D5A 28%, rgba(12,45,90,0.80) 43%, rgba(12,45,90,0.15) 61%, transparent 78%)",
+            }}
+          />
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Main content */}
+      {/* Main content — text on left, photo shows through on right */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[90vh] py-20 lg:py-24">
+        <div className="min-h-[90vh] py-20 lg:py-24 flex flex-col justify-center">
 
-          {/* Left: animated text */}
-          <div>
+          {/* Text block — constrained to left half on large screens */}
+          <div className="max-w-xl lg:max-w-[600px]">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={`text-${current}`}
@@ -167,7 +181,7 @@ export default function HeroSlider() {
                 </h1>
 
                 {/* Body */}
-                <p className="text-blue-100/90 text-lg leading-relaxed mb-8 max-w-[500px]">
+                <p className="text-blue-100/90 text-lg leading-relaxed mb-8">
                   {slide.body}
                 </p>
 
@@ -182,7 +196,7 @@ export default function HeroSlider() {
                   </Link>
                   <a
                     href={slide.cta2.href}
-                    className="inline-flex items-center gap-2 border-2 border-white/25 hover:border-white/60 hover:bg-white/5 text-white font-semibold px-6 py-3.5 rounded-xl transition-all text-sm"
+                    className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 hover:bg-white/5 text-white font-semibold px-6 py-3.5 rounded-xl transition-all text-sm"
                   >
                     {slide.cta2.phone && <Phone className="w-4 h-4 flex-shrink-0" />}
                     {slide.cta2.label}
@@ -194,7 +208,7 @@ export default function HeroSlider() {
                   {TRUST_BADGES.map(({ Icon, label }) => (
                     <div
                       key={label}
-                      className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-lg px-3 py-2"
+                      className="flex items-center gap-2 bg-[#0C2D5A]/70 border border-white/20 rounded-lg px-3 py-2 backdrop-blur-sm"
                     >
                       <Icon className="w-3.5 h-3.5 text-blue-300 flex-shrink-0" />
                       <span className="text-white/90 text-xs font-medium whitespace-nowrap">
@@ -240,33 +254,6 @@ export default function HeroSlider() {
               </div>
             </div>
           </div>
-
-          {/* Right: credentials card */}
-          <div className="hidden lg:flex justify-end">
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 w-full max-w-sm space-y-6">
-              <div className="grid grid-cols-2 gap-3">
-                {STATS.map((stat) => (
-                  <div key={stat.label} className="bg-white/10 rounded-xl p-4 text-center">
-                    <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                    <div className="text-blue-200 text-xs font-medium">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-[#0A2448]/60 rounded-xl px-5 py-4 border border-white/15">
-                <p className="text-white font-bold text-sm leading-snug">Fadi Habbouche</p>
-                <p className="text-blue-300 text-xs mt-0.5">NSW Registered Building Surveyor</p>
-                <p className="text-white/70 text-xs mt-0.5">Class A3 · BDC2868 · Civil Engineer</p>
-              </div>
-              <div className="space-y-2.5">
-                {CREDENTIALS.map((c) => (
-                  <div key={c} className="flex items-center gap-2 text-blue-200 text-xs">
-                    <ShieldCheck className="w-3.5 h-3.5 text-blue-300 flex-shrink-0" />
-                    {c}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -274,7 +261,7 @@ export default function HeroSlider() {
       {!paused && (
         <motion.div
           key={`progress-${current}`}
-          className="absolute bottom-0 left-0 h-[3px] bg-white/25 z-20"
+          className="absolute bottom-0 left-0 h-[3px] bg-white/30 z-20"
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ duration: AUTO_MS / 1000, ease: "linear" }}

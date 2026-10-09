@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -63,28 +64,38 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-[#0C2D5A] py-20 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#g)" />
-          </svg>
+      {/* Hero — banner image as background with text overlay */}
+      <section className="relative bg-[#0C2D5A] min-h-[70vh] overflow-hidden">
+        {/* Background banner image */}
+        <div className="absolute inset-0" aria-hidden="true">
+          <Image
+            src={service.banner}
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Left-to-right gradient: dark behind text, clears on right so image subject is visible */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, #0C2D5A 28%, rgba(12,45,90,0.80) 43%, rgba(12,45,90,0.15) 61%, transparent 78%)",
+            }}
+          />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-blue-300 hover:text-white text-sm mb-8 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            All Services
-          </Link>
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <div>
+        {/* Content — matches homepage hero container/alignment pattern */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="min-h-[70vh] py-20 lg:py-24 flex flex-col justify-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 text-blue-300 hover:text-white text-sm mb-8 transition-colors self-start"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              All Services
+            </Link>
+            <div className="max-w-xl lg:max-w-[600px]">
               <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/15">
                 <Icon className="w-7 h-7 text-white" />
               </div>
@@ -95,44 +106,47 @@ export default async function ServicePage({ params }: Props) {
                   </span>
                 </div>
               )}
-              <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-5">
                 {service.title}
               </h1>
-              <p className="text-blue-100 text-lg leading-relaxed mb-8 max-w-lg">
+              <p className="text-blue-100 text-lg leading-relaxed mb-8">
                 {service.tagline}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-white text-[#0C2D5A] hover:bg-blue-50 font-semibold px-6 py-3.5 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 bg-white text-[#0C2D5A] hover:bg-blue-50 font-semibold px-6 py-3.5 rounded-lg transition-colors shadow-lg shadow-black/20"
                 >
                   Get a Quote
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
                   href="tel:0423925514"
-                  className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 text-white font-semibold px-6 py-3.5 rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white/60 hover:bg-white/5 text-white font-semibold px-6 py-3.5 rounded-lg transition-all"
                 >
                   <Phone className="w-4 h-4" />
                   Call Fadi
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Key features card */}
-            <div className="bg-white/5 rounded-2xl border border-white/10 p-7">
-              <div className="text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
-                Key Features
+      {/* Key Features — wide grid section */}
+      <section className="py-10 lg:py-12 bg-[#EEF4FC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 mb-6">
+            <span className="h-px w-8 bg-[#185FA5]" />
+            <span className="text-[#185FA5] text-xs font-semibold uppercase tracking-wider">Key Features</span>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {service.features.map((f) => (
+              <div key={f} className="flex items-start gap-3 bg-white rounded-xl p-4 border border-blue-100 shadow-sm">
+                <CheckCircle2 className="w-4 h-4 text-[#185FA5] flex-shrink-0 mt-0.5" />
+                <span className="text-slate-700 text-sm leading-relaxed">{f}</span>
               </div>
-              <ul className="space-y-3">
-                {service.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
-                    <span className="text-blue-100 text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>

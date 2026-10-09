@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Award } from "lucide-react";
 
@@ -74,8 +75,17 @@ export default function AboutFadiSection() {
             </Link>
           </div>
 
-          {/* Right: expertise grid */}
-          <div>
+          {/* Right: photo + expertise grid */}
+          <div className="flex flex-col gap-5">
+            <div className="relative w-full h-64 lg:h-72 rounded-2xl overflow-hidden shadow-md">
+              <Image
+                src="/images/about-fadi.png"
+                alt="Certify Right — Building Certification"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
             <div className="grid grid-cols-2 gap-4">
               {expertise.map((item) => (
                 <div
