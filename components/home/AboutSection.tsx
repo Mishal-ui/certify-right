@@ -23,26 +23,21 @@ export default function AboutSection() {
                 About Certify Right
               </span>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#0C2D5A] mb-6 leading-tight">
-              Certification Made Clear
-            </h2>
-            <div className="space-y-4 text-slate-600 leading-relaxed mb-8">
-              <p>
-                Certify Right provides NSW building certification services for homeowners, builders,
-                developers, and granny flat companies across Greater Sydney and NSW.
-              </p>
-              <p>
-                We are operated by Fadi Habbouche — a Civil Engineer and NSW Fair Trading
-                Registered Building Surveyor with over 15 years of experience across building
-                surveying, council compliance, building design, and fire safety. Fadi holds
-                Class A3 registration (BDC2868) and is a member of AIBS and AAC.
-              </p>
-              <p>
-                Our approach is straightforward: we give you clear answers, respond promptly,
-                and focus on keeping your project moving rather than creating unnecessary
-                delays or complications.
-              </p>
+            {/* Video — replace src with the Certify Right company video when available */}
+            <div className="relative w-full rounded-xl overflow-hidden shadow-lg aspect-video bg-[#0C2D5A] mb-8">
+              <video
+                className="w-full h-full"
+                controls
+                poster="/images/hero-new.webp"
+                preload="metadata"
+              >
+                <source
+                  src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </div>
+
             <Link
               href="/about"
               className="inline-flex items-center gap-2 bg-[#185FA5] hover:bg-[#0C2D5A] text-white font-semibold px-6 py-3 rounded-lg transition-colors"

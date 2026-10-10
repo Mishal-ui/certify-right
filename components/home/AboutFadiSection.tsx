@@ -79,10 +79,11 @@ export default function AboutFadiSection() {
           <div className="flex flex-col gap-5">
             <div className="relative w-full h-64 lg:h-72 rounded-2xl overflow-hidden shadow-md">
               <Image
-                src="/images/about-fadi.png"
-                alt="Certify Right — Building Certification"
+                src="/images/fadi-site.webp"
+                alt="Fadi Habbouche — Certify Right Building Certification"
                 fill
                 className="object-cover"
+                style={{ objectPosition: "60% 15%" }}
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>

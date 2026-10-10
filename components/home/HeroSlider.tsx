@@ -29,17 +29,6 @@ interface SlideData {
 const SLIDES: SlideData[] = [
   {
     id: 0,
-    chip: "NSW Building Certification",
-    headline: "Fast. Clear. Responsive.",
-    accent: "Done Right.",
-    body: "Fadi Habbouche is a NSW Registered Building Surveyor (Class A3 · BDC2868) and Civil Engineer with 15+ years experience — handling your certification from start to finish.",
-    cta1: { label: "Get a Quote Within 24 Hours", href: "/contact" },
-    cta2: { label: "0423 925 514", href: "tel:0423925514", phone: true },
-    bg: "/images/hero-1.png",
-    objectPos: "65% center",
-  },
-  {
-    id: 1,
     chip: "Complying Development Certificate",
     headline: "Skip Council.",
     accent: "Get Your CDC Faster.",
@@ -48,6 +37,17 @@ const SLIDES: SlideData[] = [
     cta2: { label: "Call Fadi", href: "tel:0423925514", phone: true },
     bg: "/images/hero-2.png",
     objectPos: "60% center",
+  },
+  {
+    id: 1,
+    chip: "NSW Building Certification",
+    headline: "Fast. Clear. Responsive.",
+    accent: "Done Right.",
+    body: "Fadi Habbouche is a NSW Registered Building Surveyor (Class A3 · BDC2868) and Civil Engineer with 15+ years experience — handling your certification from start to finish.",
+    cta1: { label: "Get a Quote Within 24 Hours", href: "/contact" },
+    cta2: { label: "0423 925 514", href: "tel:0423925514", phone: true },
+    bg: "/images/hero-new.webp",
+    objectPos: "65% center",
   },
   {
     id: 2,
