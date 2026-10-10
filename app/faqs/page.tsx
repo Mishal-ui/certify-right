@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Phone, ArrowRight } from "lucide-react";
 import { faqs } from "@/data/faqs";
+import FaqHeroSlider from "@/components/faq/FaqHeroSlider";
 
 const categories = ["All", "General", "CDC", "Inspections"] as const;
 type Category = (typeof categories)[number];
@@ -30,34 +31,7 @@ export default function FAQsPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-[#0C2D5A] py-20 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#g)" />
-          </svg>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="h-px w-8 bg-blue-400" />
-              <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">FAQs</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Frequently Asked Questions
-            </h1>
-            <p className="text-blue-100 text-xl leading-relaxed max-w-2xl">
-              Questions about CDCs, construction certificates, building inspections, timelines,
-              and more — answered clearly.
-            </p>
-          </div>
-        </div>
-      </section>
+      <FaqHeroSlider />
 
       {/* FAQ content */}
       <section className="py-20 lg:py-24 bg-white">

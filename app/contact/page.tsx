@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ContactForm from "@/components/ui/ContactForm";
 import { Phone, Mail, MapPin, Clock, ShieldCheck } from "lucide-react";
 
@@ -52,30 +53,40 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#0C2D5A] py-20 lg:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#g)" />
-          </svg>
+      <section className="relative bg-[#0C2D5A] min-h-[70vh] overflow-hidden">
+        <div className="absolute inset-0" aria-hidden="true">
+          <Image
+            src="/images/contact-hero.webp"
+            alt=""
+            fill
+            className="object-cover"
+            style={{ objectPosition: "65% center" }}
+            priority
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, #0C2D5A 28%, rgba(12,45,90,0.80) 43%, rgba(12,45,90,0.15) 61%, transparent 78%)",
+            }}
+          />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="h-px w-8 bg-blue-400" />
-              <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">Contact</span>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="min-h-[70vh] py-20 lg:py-24 flex flex-col justify-center">
+            <div className="max-w-xl lg:max-w-[600px]">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="h-px w-8 bg-blue-400" />
+                <span className="text-blue-300 text-xs font-semibold tracking-widest uppercase">Contact</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                Get a Quote
+              </h1>
+              <p className="text-blue-100 text-xl leading-relaxed">
+                Tell us about your project. We respond within 24 hours and provide
+                a quote promptly — you speak directly with Fadi.
+              </p>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Get a Quote
-            </h1>
-            <p className="text-blue-100 text-xl leading-relaxed max-w-2xl">
-              Tell us about your project. We respond within 24 hours and provide
-              a quote promptly — you speak directly with Fadi.
-            </p>
           </div>
         </div>
       </section>
